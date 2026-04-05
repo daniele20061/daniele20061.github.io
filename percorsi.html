@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html class="light" lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Percorsi | Ilaria Dammicco - Mental Training & Performance</title>
+<meta content="Scopri i percorsi di mental training di Ilaria Dammicco: programmi per aziende, società sportive, atleti e lavoratori. Crescita mentale, gestione dello stress e performance d'eccellenza." name="description"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-container": "#e5e9eb","primary-container": "#a855f7",
+          "on-error-container": "#510017","secondary-dim": "#4d4a7c",
+          "on-tertiary": "#1a1a1a","on-surface-variant": "#595c5e",
+          "tertiary-dim": "#1a1a1a","error": "#b41340","tertiary": "#1a1a1a",
+          "on-background": "#2c2f31","on-secondary": "#f5f1ff","surface": "#f5f7f9",
+          "on-surface": "#2c2f31","on-primary-container": "#2e006c",
+          "inverse-surface": "#0b0f10","outline": "#747779","secondary": "#595689",
+          "inverse-on-surface": "#9a9d9f","surface-container-highest": "#d9dde0",
+          "primary": "#8d01c6","on-tertiary-fixed-variant": "#1a1a1a",
+          "background": "#f5f7f9","outline-variant": "#abadaf","on-secondary-fixed": "#312e5f",
+          "secondary-fixed": "#d0ccff","surface-bright": "#f5f7f9","primary-dim": "#6b0196",
+          "tertiary-container": "#1a1a1a","primary-fixed-dim": "#a855f7",
+          "tertiary-fixed": "#1a1a1a","on-primary": "#ffffff","error-container": "#f74b6d",
+          "on-tertiary-fixed": "#1a1a1a","surface-container-lowest": "#ffffff",
+          "on-primary-fixed": "#000000","on-primary-fixed-variant": "#390083",
+          "on-secondary-container": "#444273","surface-dim": "#d0d5d8",
+          "surface-container-high": "#dfe3e6","on-secondary-fixed-variant": "#4e4b7d",
+          "secondary-container": "#d0ccff","tertiary-fixed-dim": "#1a1a1a",
+          "on-tertiary-container": "#1a1a1a","surface-container-low": "#eef1f3",
+          "primary-fixed": "#a855f7","error-dim": "#a70138","on-error": "#ffefef",
+          "secondary-fixed-dim": "#c2bef8","inverse-primary": "#a855f7",
+          "surface-tint": "#8d01c6","surface-variant": "#d9dde0"
+        },
+        fontFamily: { "headline": ["Manrope"], "body": ["Inter"], "label": ["Inter"] },
+        borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+      },
+    },
+  }
+</script>
+<link rel="stylesheet" href="css/styles.css"/>
+<link rel="stylesheet" href="css/hero.css"/>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-x-hidden">
+
+<!-- Page transition overlay -->
+<div id="page-transition-overlay"></div>
+
+<!-- Custom cursor -->
+<div id="custom-cursor-arrow">
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 1L24 14L14 17L11 24L4 1Z" fill="url(#cursorGrad)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-linejoin="round"/>
+    <defs>
+      <linearGradient id="cursorGrad" x1="8" y1="5" x2="32" y2="35" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#c084fc"/>
+        <stop offset="1" stop-color="#8d01c6"/>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+
+<div id="site-header" data-active="percorsi"></div>
+
+<main class="page-content">
+  <!-- HERO -->
+  <section class="relative h-[60vh] min-h-[480px] flex items-center overflow-hidden"
+    style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOwvVq1onGnwdY_ajZqRwMtRBPgLJZY7Ql7ev4W2KB9BXFHkG-are8DbKKzsEHa8yM4FWi0678jc4XC3aRgEKQJesBE8xx8GKwJDdtpZLyBukhQ1n5rnvFwAIbHlLiFEWwFruxR1JxxNJL2F-U2eia0XGsiaMJ-ZzlgRzo6me7QB86zYJ98DSGX6wunLfOQsIFWlSBNXYyx5emcPsrz3sMCcMPycUBQ4yN8paVC1r0r_dka-lyb8V2IKEr29VG4cGp3Oa33LCCcwY');">
+    <div class="absolute inset-0 bg-primary/50 backdrop-brightness-[0.55] z-0"></div>
+    <div class="max-w-7xl mx-auto px-8 w-full relative z-10 text-white">
+      <div class="max-w-3xl space-y-6">
+        <span class="inline-block px-4 py-1 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 font-label text-xs font-semibold tracking-widest uppercase">Mental Training</span>
+        <h1 class="text-5xl md:text-7xl font-headline font-extrabold leading-[1.05] tracking-tight">
+          Percorsi
+        </h1>
+        <p class="text-xl md:text-2xl text-white/85 max-w-2xl leading-relaxed font-light">
+          Quattro architetture mentali progettate per trasformare il potenziale in risultati tangibili. Ogni percorso segue un metodo scientifico, misurabile e personalizzato.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="py-20 bg-surface-container-lowest">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-label text-[10px] font-bold tracking-widest uppercase mb-6">Il Metodo</span>
+          <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface mb-6 leading-tight">Ogni percorso è una struttura. Ogni struttura ha fondamenta.</h2>
+        </div>
+        <div>
+          <p class="text-lg text-on-surface-variant font-light leading-relaxed mb-6">
+            Non esistono scorciatoie nella costruzione della resilienza mentale. Ogni percorso che propongo segue una progressione precisa: dalla diagnosi iniziale alla misurazione dei risultati, passando per fasi di allenamento mirato e consolidamento.
+          </p>
+          <p class="text-lg text-on-surface-variant font-light leading-relaxed">
+            Che tu rappresenti un'azienda, una società sportiva, un atleta o un professionista, troverai un percorso progettato per il tuo contesto specifico.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  PERCORSO AZIENDE  ═══════════════════ -->
+  <section class="py-24 bg-surface-container-low/40" id="aziende">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <!-- Left: label + icon -->
+        <div class="lg:col-span-3 lg:sticky lg:top-28">
+          <span class="material-symbols-outlined text-primary mb-4 text-5xl" style='font-variation-settings:"wght" 300;'>corporate_fare</span>
+          <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-label text-[10px] font-bold tracking-widest uppercase mb-3">Percorso 01</span>
+          <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface leading-tight">Aziende</h2>
+        </div>
+        <!-- Right: content -->
+        <div class="lg:col-span-9 space-y-10">
+          <p class="text-xl text-on-surface-variant font-light leading-relaxed">
+            L'ottimizzazione del clima organizzativo non è un intervento cosmetico. È una ristrutturazione delle dinamiche relazionali che governano la produttività, la retention e il benessere dei team. Questo percorso trasforma lo stress da costo nascosto a leva strategica.
+          </p>
+
+          <!-- Fasi -->
+          <div class="space-y-6">
+            <h3 class="text-lg font-headline font-bold text-primary uppercase tracking-wider">Fasi del percorso</h3>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">1</span>
+                  <h4 class="font-headline font-bold text-on-surface">Diagnosi organizzativa</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Analisi del clima aziendale attraverso questionari validati, interviste strutturate e mappatura dei fattori di stress critici.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">2</span>
+                  <h4 class="font-headline font-bold text-on-surface">Progettazione</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Definizione di un piano d'intervento su misura: workshop, sessioni di gruppo, formazione dei leader sulla gestione emotiva dei team.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">3</span>
+                  <h4 class="font-headline font-bold text-on-surface">Implementazione</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Erogazione dei moduli formativi con esercitazioni pratiche, role-playing e protocolli di gestione dello stress applicati al contesto reale.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">4</span>
+                  <h4 class="font-headline font-bold text-on-surface">Misurazione e follow-up</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Valutazione post-intervento con indicatori KPI psicologici, report dettagliato e piano di mantenimento a 6 mesi.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Meta info -->
+          <div class="grid sm:grid-cols-3 gap-6">
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Durata</p>
+              <p class="text-lg font-headline font-bold text-on-surface">3–6 mesi</p>
+            </div>
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Target</p>
+              <p class="text-lg font-headline font-bold text-on-surface">Team, middle management, HR</p>
+            </div>
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Formato</p>
+              <p class="text-lg font-headline font-bold text-on-surface">In presenza / Ibrido</p>
+            </div>
+          </div>
+
+          <a class="inline-flex items-center gap-2 text-primary font-headline font-bold group/link" href="prenotazione.html">
+            <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-white transition-all"><span class="material-symbols-outlined text-xl">add</span></span>
+            <span>Richiedi una proposta per la tua azienda</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  PERCORSO SOCIETÀ SPORTIVE  ═══════════════════ -->
+  <section class="py-24 bg-surface-container-lowest" id="societa">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-3 lg:sticky lg:top-28">
+          <span class="material-symbols-outlined text-primary mb-4 text-5xl" style='font-variation-settings:"wght" 300;'>groups</span>
+          <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-label text-[10px] font-bold tracking-widest uppercase mb-3">Percorso 02</span>
+          <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface leading-tight">Società Sportive</h2>
+        </div>
+        <div class="lg:col-span-9 space-y-10">
+          <p class="text-xl text-on-surface-variant font-light leading-relaxed">
+            Il mental training non è un accessorio: è un moltiplicatore di performance. Questo percorso integra la psicologia dello sport nella struttura tecnica della società, creando una cultura mentale condivisa che attraversa ogni livello, dal settore giovanile alla prima squadra.
+          </p>
+
+          <div class="space-y-6">
+            <h3 class="text-lg font-headline font-bold text-primary uppercase tracking-wider">Fasi del percorso</h3>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">1</span>
+                  <h4 class="font-headline font-bold text-on-surface">Audit della cultura sportiva</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Analisi dell'ecosistema societario: comunicazione tra staff tecnico e atleti, gestione della pressione competitiva, protocolli esistenti di supporto psicologico.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">2</span>
+                  <h4 class="font-headline font-bold text-on-surface">Design del programma</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Co-progettazione con allenatori e dirigenti di un programma di mental training integrato nel calendario sportivo stagionale.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">3</span>
+                  <h4 class="font-headline font-bold text-on-surface">Formazione dello staff</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Training per allenatori e preparatori su comunicazione efficace, riconoscimento precoce del disagio, tecniche di attivazione e deattivazione pre-gara.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">4</span>
+                  <h4 class="font-headline font-bold text-on-surface">Monitoraggio stagionale</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Check-point mensili, adattamento del programma in base ai risultati, report finale con raccomandazioni per la stagione successiva.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-6">
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Durata</p>
+              <p class="text-lg font-headline font-bold text-on-surface">Intera stagione sportiva</p>
+            </div>
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Target</p>
+              <p class="text-lg font-headline font-bold text-on-surface">Settori giovanili, prime squadre, staff tecnico</p>
+            </div>
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Formato</p>
+              <p class="text-lg font-headline font-bold text-on-surface">In presenza presso la struttura</p>
+            </div>
+          </div>
+
+          <a class="inline-flex items-center gap-2 text-primary font-headline font-bold group/link" href="prenotazione.html">
+            <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-white transition-all"><span class="material-symbols-outlined text-xl">add</span></span>
+            <span>Integra il mental training nella tua società</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  PERCORSO ATLETI  ═══════════════════ -->
+  <section class="py-24 bg-surface-container-low/40" id="atleti">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-3 lg:sticky lg:top-28">
+          <span class="material-symbols-outlined text-primary mb-4 text-5xl" style='font-variation-settings:"wght" 300;'>fitness_center</span>
+          <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-label text-[10px] font-bold tracking-widest uppercase mb-3">Percorso 03</span>
+          <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface leading-tight">Atleti</h2>
+        </div>
+        <div class="lg:col-span-9 space-y-10">
+          <p class="text-xl text-on-surface-variant font-light leading-relaxed">
+            La differenza tra un buon atleta e un atleta d'élite non è solo fisica: è mentale. Questo percorso individuale costruisce resilienza, gestione dell'ansia pre-gara e capacità di mantenere il focus sotto pressione estrema. Un'architettura mentale personale, cucita sul tuo sport e sulla tua personalità.
+          </p>
+
+          <div class="space-y-6">
+            <h3 class="text-lg font-headline font-bold text-primary uppercase tracking-wider">Fasi del percorso</h3>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">1</span>
+                  <h4 class="font-headline font-bold text-on-surface">Assessment psicologico</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Profilo mentale dell'atleta: valutazione di ansia competitiva, stili di coping, motivazione intrinseca, punti di forza e vulnerabilità psicologiche.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">2</span>
+                  <h4 class="font-headline font-bold text-on-surface">Protocollo personalizzato</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Costruzione del piano di allenamento mentale: tecniche di visualizzazione, routine pre-gara, gestione del dialogo interno, respirazione tattica.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">3</span>
+                  <h4 class="font-headline font-bold text-on-surface">Allenamento mentale attivo</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Sessioni individuali settimanali con esercitazioni pratiche, simulazioni di gara e integrazione con il programma di allenamento fisico.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">4</span>
+                  <h4 class="font-headline font-bold text-on-surface">Peak state &amp; mantenimento</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Raggiungimento dello stato di prestazione ottimale, piano di autosufficienza con strumenti autonomi e sessioni di richiamo periodiche.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-6">
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Durata</p>
+              <p class="text-lg font-headline font-bold text-on-surface">2–4 mesi</p>
+            </div>
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Target</p>
+              <p class="text-lg font-headline font-bold text-on-surface">Atleti agonisti ed élite, ogni disciplina</p>
+            </div>
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Formato</p>
+              <p class="text-lg font-headline font-bold text-on-surface">Individuale, in presenza o online</p>
+            </div>
+          </div>
+
+          <a class="inline-flex items-center gap-2 text-primary font-headline font-bold group/link" href="prenotazione.html">
+            <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-white transition-all"><span class="material-symbols-outlined text-xl">add</span></span>
+            <span>Inizia il tuo percorso individuale</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  PERCORSO LAVORATORI  ═══════════════════ -->
+  <section class="py-24 bg-surface-container-lowest" id="lavoratori">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-3 lg:sticky lg:top-28">
+          <span class="material-symbols-outlined text-primary mb-4 text-5xl" style='font-variation-settings:"wght" 300;'>person_celebrate</span>
+          <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-label text-[10px] font-bold tracking-widest uppercase mb-3">Percorso 04</span>
+          <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface leading-tight">Lavoratori</h2>
+        </div>
+        <div class="lg:col-span-9 space-y-10">
+          <p class="text-xl text-on-surface-variant font-light leading-relaxed">
+            Burnout, transizioni di carriera, conflitti relazionali sul posto di lavoro: le sfide professionali hanno un costo psicologico misurabile. Questo percorso offre supporto strutturato per attraversare le fasi critiche con consapevolezza, ricostruire il senso di efficacia professionale e progettare il prossimo capitolo con chiarezza strategica.
+          </p>
+
+          <div class="space-y-6">
+            <h3 class="text-lg font-headline font-bold text-primary uppercase tracking-wider">Fasi del percorso</h3>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">1</span>
+                  <h4 class="font-headline font-bold text-on-surface">Mappatura del disagio</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Colloquio clinico iniziale e somministrazione di strumenti validati per identificare la natura e l'intensità del malessere professionale.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">2</span>
+                  <h4 class="font-headline font-bold text-on-surface">Ristrutturazione cognitiva</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Lavoro sui pattern di pensiero disfunzionali, gestione del perfezionismo, ridefinizione dei confini tra vita professionale e personale.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">3</span>
+                  <h4 class="font-headline font-bold text-on-surface">Piano di azione</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Definizione di obiettivi concreti e misurabili: strategie di coping, assertività comunicativa, pianificazione della transizione o del cambiamento.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-6 border border-surface-variant/20 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline font-bold text-sm">4</span>
+                  <h4 class="font-headline font-bold text-on-surface">Consolidamento</h4>
+                </div>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Verifica dei progressi, rafforzamento delle competenze acquisite, piano di prevenzione delle ricadute e strumenti di auto-monitoraggio.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-6">
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Durata</p>
+              <p class="text-lg font-headline font-bold text-on-surface">2–6 mesi</p>
+            </div>
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Target</p>
+              <p class="text-lg font-headline font-bold text-on-surface">Professionisti, manager, freelance</p>
+            </div>
+            <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+              <p class="text-xs font-label font-bold text-outline uppercase tracking-wider mb-1">Formato</p>
+              <p class="text-lg font-headline font-bold text-on-surface">Individuale, in presenza o online</p>
+            </div>
+          </div>
+
+          <a class="inline-flex items-center gap-2 text-primary font-headline font-bold group/link" href="prenotazione.html">
+            <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-white transition-all"><span class="material-symbols-outlined text-xl">add</span></span>
+            <span>Prenota un colloquio conoscitivo</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="py-24 bg-surface-container-low overflow-hidden">
+    <div class="max-w-7xl mx-auto px-8 relative">
+      <div class="bg-primary-container/20 rounded-[2rem] p-12 md:p-20 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 opacity-10">
+          <span class="material-symbols-outlined text-[200px]" style='font-variation-settings:"wght" 100;'>route</span>
+        </div>
+        <div class="relative z-10 max-w-2xl">
+          <h2 class="text-4xl font-headline font-extrabold mb-6 leading-tight">Non sai quale percorso fa <span class="text-primary italic">per te?</span></h2>
+          <p class="text-lg text-on-surface-variant mb-10 max-w-lg">Prenota un colloquio conoscitivo gratuito di 20 minuti. Analizzeremo insieme la tua situazione e identificheremo il percorso più adatto ai tuoi obiettivi.</p>
+          <button class="px-8 py-4 bg-primary text-on-primary rounded-xl font-headline font-bold text-lg shadow-xl shadow-black/20 transition-all hover:-translate-y-1 hover:bg-primary-dim" onclick="window.location.href='prenotazione.html'">
+            Prenota consulenza gratuita
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer" data-active="percorsi"></div>
+
+<script src="js/navbar.js"></script>
+<script src="js/site-components.js"></script>
+<script src="js/calendar.js"></script>
+<script>
+/* ══════════════════════════════════════════
+   PAGE TRANSITION SYSTEM
+   ══════════════════════════════════════════ */
+ (function pageTransitions() {
+  var overlay = document.getElementById('page-transition-overlay');
+  if (!overlay) return;
+
+  document.querySelectorAll('a[href$=".html"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var href = this.href;
+      var main = document.querySelector('main.page-content');
+      if (main) main.classList.add('fading-out');
+      overlay.classList.add('entering');
+      sessionStorage.setItem('pt', '1');
+      setTimeout(function() { window.location.href = href; }, 500);
+    });
+  });
+
+  if (sessionStorage.getItem('pt') === '1') {
+    sessionStorage.removeItem('pt');
+    overlay.classList.add('leaving');
+    setTimeout(function() { overlay.classList.remove('leaving'); }, 550);
+  }
+})();
+
+/* ══════════════════════════════════════════
+   SCROLL REVEAL ANIMATIONS
+   ══════════════════════════════════════════ */
+(function scrollReveal() {
+  var reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
+  if (!reveals.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+})();
+
+/* ══════════════════════════════════════════
+   EXISTING FUNCTIONALITY
+   ══════════════════════════════════════════ */
+  // ══════════════════════════════════════════
+  // CUSTOM CURSOR
+  // ══════════════════════════════════════════
+  (function customCursor() {
+    var arrow = document.getElementById('custom-cursor-arrow');
+    if (!arrow) return;
+    var mx = -100, my = -100;
+    document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
+    document.addEventListener('touchstart', function() { arrow.style.opacity = '0'; });
+    function animate() { arrow.style.left = mx + 'px'; arrow.style.top = my + 'px'; requestAnimationFrame(animate); }
+    animate();
+    var hoverTargets = 'a, button, input, textarea, .accordion-item, [role="button"], .stat-item, .process-card, .pillar-item, .manifesto-card, .acc-item';
+    document.addEventListener('mouseover', function(e) {
+      if (e.target.closest(hoverTargets)) arrow.classList.add('hovering');
+      else arrow.classList.remove('hovering');
+    });
+  })();
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.accordion-item').forEach(function(item) {
+    item.addEventListener('mouseenter', function() {
+      document.querySelectorAll('.accordion-item').forEach(function(i) { i.classList.remove('active'); });
+      item.classList.add('active');
+    });
+  });
+});
+</script>
+</body>
+</html>

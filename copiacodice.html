@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ilaria Dammicco — Sport & Performance Psychology</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --purple: #8d01c6;
+    --purple-light: #a855f7;
+    --dark: #0f172a;
+    --slate: #1e293b;
+    --white: #ffffff;
+    --grey: #f8fafc;
+    --text-muted: #94a3b8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom Cursor */
+  .cursor {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: var(--purple);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--purple);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.15s ease;
+    mix-blend-mode: difference;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15,23,42,0.0);
+    backdrop-filter: blur(0px);
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(15,23,42,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(141,1,198,0.2);
+  }
+  .nav-logo {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-btn {
+    background: var(--purple);
+    color: white;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+  }
+  .nav-btn:hover { background: #7a01ad; }
+  .nav-menu-btn {
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 9px 18px;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .nav-menu-btn:hover { background: rgba(255,255,255,0.14); }
+
+  /* HERO */
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  #butterfly-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .hero-bg-3d {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  #three-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 0 40px 0 40px;
+  }
+
+  .hero-tagline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .hero-tagline-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--purple);
+    border-radius: 50%;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(141,1,198,0.7); }
+    50% { box-shadow: 0 0 0 8px rgba(141,1,198,0); }
+  }
+  .hero-tagline span {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--purple-light);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: clamp(52px, 8vw, 120px);
+    line-height: 0.92;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    margin-bottom: 0;
+  }
+  .hero-title .outline {
+    -webkit-text-stroke: 1.5px rgba(255,255,255,0.35);
+    color: transparent;
+  }
+  .hero-title .purple-word {
+    color: var(--purple);
+  }
+
+  .hero-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 32px 40px 48px;
+    position: relative;
+    z-index: 3;
+  }
+  .hero-typewriter-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .typewriter-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .typewriter-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    min-height: 30px;
+  }
+  .typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    background: var(--purple);
+    vertical-align: middle;
+    margin-left: 3px;
+    animation: blink 0.8s step-end infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  .hero-scroll-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--purple), transparent);
+    animation: scroll-line 1.5s ease-in-out infinite;
+  }
+  @keyframes scroll-line {
+    0%, 100% { opacity: 1; transform: scaleY(1); }
+    50% { opacity: 0.4; transform: scaleY(0.6); }
+  }
+
+  /* LOGO BAR */
+  #logo-bar {
+    background: var(--grey);
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    overflow: hidden;
+  }
+  .logo-bar-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: #cbd5e1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .logo-bar-track {
+    display: flex;
+    gap: 56px;
+    align-items: center;
+    animation: marquee 18s linear infinite;
+    flex-shrink: 0;
+  }
+  .logo-bar-inner {
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .logo-name {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    color: #cbd5e1;
+    opacity: 0.45;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .logo-name:hover {
+    opacity: 1;
+    color: var(--purple);
+  }
+
+  /* SECTION: MANIFESTO */
+  #manifesto {
+    background: var(--white);
+    padding: 120px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .manifesto-left h2 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    margin-bottom: 32px;
+  }
+  .manifesto-left h2 em {
+    font-style: normal;
+    -webkit-text-stroke: 1.5px var(--dark);
+    color: transparent;
+  }
+  .manifesto-left p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #475569;
+    max-width: 460px;
+    margin-bottom: 40px;
+  }
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--purple);
+    text-decoration: none;
+    border-bottom: 2px solid var(--purple);
+    padding-bottom: 4px;
+    cursor: none;
+    transition: gap 0.2s;
+  }
+  .cta-link:hover { gap: 16px; }
+
+  .manifesto-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: #e2e8f0;
+  }
+  .manifesto-card {
+    background: var(--white);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .manifesto-card:nth-child(1) { background: var(--dark); }
+  .manifesto-card:nth-child(1) .card-num { color: var(--purple); }
+  .manifesto-card:nth-child(1) .card-title { color: var(--white); }
+  .manifesto-card:nth-child(1) .card-desc { color: #94a3b8; }
+
+  .card-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+  }
+  .card-title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+  }
+  .card-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #64748b;
+  }
+
+  /* PILLAR STRIP */
+  #pillars {
+    background: var(--dark);
+    padding: 0 40px;
+    display: flex;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .pillar-item {
+    flex: 1;
+    padding: 56px 32px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: background 0.3s;
+    cursor: none;
+  }
+  .pillar-item:last-child { border-right: none; }
+  .pillar-item:hover { background: rgba(141,1,198,0.08); }
+  .pillar-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--purple);
+    text-transform: uppercase;
+  }
+  .pillar-name {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .pillar-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #475569;
+  }
+
+  /* ACCORDION / SECTORS */
+  #sectors {
+    background: var(--grey);
+    padding: 100px 40px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--purple);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4vw, 52px);
+    color: var(--dark);
+    letter-spacing: -0.03em;
+    margin-bottom: 60px;
+  }
+  .section-title em {
+    font-style: normal;
+    color: var(--purple);
+  }
+
+  .accordion-wrap {
+    display: flex;
+    gap: 2px;
+    height: 380px;
+  }
+  .acc-item {
+    flex: 0.5;
+    background: var(--dark);
+    overflow: hidden;
+    transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 36px 28px;
+  }
+  .acc-item.active { flex: 3.5; }
+  .acc-item:hover:not(.active) { flex: 1; }
+
+  .acc-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    z-index: 0;
+  }
+  .acc-item.active .acc-bg {
+    background: linear-gradient(135deg, #2d0548 0%, #0f172a 100%);
+  }
+  .acc-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0%;
+    background: var(--purple);
+    z-index: 1;
+    transition: height 0.6s ease;
+  }
+  .acc-item.active .acc-accent { height: 100%; }
+
+  .acc-content { position: relative; z-index: 2; }
+  .acc-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease 0.2s;
+  }
+  .acc-item.active .acc-icon { opacity: 1; transform: translateY(0); }
+  .acc-vertical-title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--white);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transition: all 0.4s ease;
+    white-space: nowrap;
+  }
+  .acc-item.active .acc-vertical-title {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .acc-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #94a3b8;
+    max-width: 340px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease 0.2s, opacity 0.4s ease 0.2s;
+    opacity: 0;
+  }
+  .acc-item.active .acc-desc { max-height: 200px; opacity: 1; }
+  .acc-tag {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 14px;
+    background: rgba(141,1,198,0.25);
+    border: 1px solid rgba(141,1,198,0.5);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--purple-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.35s;
+  }
+  .acc-item.active .acc-tag { opacity: 1; }
+
+  /* PHYSICS VALUES SECTION */
+  #values {
+    background: var(--white);
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  #matter-canvas {
+    width: 100%;
+    height: 480px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    background: var(--dark);
+    cursor: none;
+    display: block;
+  }
+  .values-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+  }
+  .values-note {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .values-note::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--purple);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* STATS BAND */
+  #stats {
+    background: var(--purple);
+    padding: 64px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat-item {
+    padding: 0 40px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .stat-item:first-child { padding-left: 0; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    color: var(--white);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* PROCESS */
+  #process {
+    background: var(--dark);
+    padding: 100px 40px;
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    margin-top: 60px;
+  }
+  .process-card {
+    background: var(--dark);
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .process-card::before {
+    content: attr(data-num);
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 80px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .process-card:hover { background: rgba(141,1,198,0.07); }
+  .process-step {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--purple);
+    text-transform: uppercase;
+  }
+  .process-name {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .process-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #475569;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 80px 40px 48px;
+  }
+  .footer-big {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 86px);
+    letter-spacing: -0.04em;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .footer-big .underline-purple {
+    text-decoration: underline;
+    text-decoration-color: var(--purple);
+    text-underline-offset: 8px;
+  }
+  .footer-email-link {
+    display: inline-block;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 700;
+    color: var(--purple-light);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    margin-bottom: 80px;
+    cursor: none;
+    transition: color 0.2s;
+  }
+  .footer-email-link:hover { color: var(--white); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 40px;
+  }
+  .footer-logo-big {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+  .footer-links-col { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .footer-link {
+    font-size: 14px;
+    color: #475569;
+    text-decoration: none;
+    cursor: none;
+    transition: color 0.2s;
+  }
+  .footer-link:hover { color: var(--white); }
+  .footer-cols {
+    display: flex;
+    gap: 64px;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    margin-top: 48px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    padding-top: 32px;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* PARTICLE CANVAS */
+  #particle-canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    #manifesto { grid-template-columns: 1fr; padding: 80px 20px; gap: 48px; }
+    #pillars { flex-direction: column; padding: 0 20px; }
+    .pillar-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 40px 0; }
+    #sectors { padding: 80px 20px; }
+    .accordion-wrap { flex-direction: column; height: auto; }
+    .acc-item { flex: none; min-height: 64px; }
+    .acc-item.active { min-height: 280px; }
+    .acc-vertical-title { writing-mode: horizontal-tb; transform: none; font-size: 14px; }
+    #stats { grid-template-columns: 1fr 1fr; }
+    .stat-item { padding: 32px 20px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    .process-grid { grid-template-columns: 1fr; }
+    footer { padding: 60px 20px 40px; }
+    .footer-bottom { flex-direction: column; gap: 40px; align-items: flex-start; }
+    .footer-cols { gap: 32px; }
+    .hero-content { padding: 0 20px; }
+    .hero-bottom { padding: 24px 20px 40px; }
+    #values { padding: 80px 20px; }
+    #process { padding: 80px 20px; }
+    #logo-bar { padding: 20px; }
+    .logo-bar-label { display: none; }
+    .values-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Nav -->
+<nav id="navbar">
+  <div class="nav-logo">Ilaria Dammicco</div>
+  <div class="nav-right">
+    <button class="nav-btn">
+      <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="white"/></svg>
+      Contattami
+    </button>
+    <button class="nav-menu-btn">Menu &nbsp;···</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="particle-canvas"></canvas>
+  <canvas id="butterfly-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-tagline">
+      <div class="hero-tagline-dot"></div>
+      <span>Mental Architecture · Performance Psychology</span>
+    </div>
+    <h1 class="hero-title">
+      ILARIA<br>
+      <span class="outline">DAMMI</span><span class="purple-word">CCO</span>
+    </h1>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-typewriter-block">
+      <span class="typewriter-label">Specializzazione</span>
+      <div class="typewriter-text" id="typewriter-el"><span class="typewriter-cursor"></span></div>
+    </div>
+    <div class="hero-scroll-cta">
+      <div class="scroll-line"></div>
+      <span>SCROLL TO EXPLORE</span>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO BAR -->
+<div id="logo-bar">
+  <span class="logo-bar-label">Partner &amp; Collaborazioni</span>
+  <div class="logo-bar-inner">
+    <div class="logo-bar-track" id="logoTrack">
+      <span class="logo-name">CONI</span>
+      <span class="logo-name">FIGC</span>
+      <span class="logo-name">PwC</span>
+      <span class="logo-name">Forbes</span>
+      <span class="logo-name">FISI</span>
+      <span class="logo-name">Deloitte</span>
+      <span class="logo-name">Serie A</span>
+      <span class="logo-name">ACI Sport</span>
+      <span class="logo-name">CONI</span>
+      <span class="logo-name">FIGC</span>
+      <span class="logo-name">PwC</span>
+      <span class="logo-name">Forbes</span>
+      <span class="logo-name">FISI</span>
+      <span class="logo-name">Deloitte</span>
+      <span class="logo-name">Serie A</span>
+      <span class="logo-name">ACI Sport</span>
+    </div>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="manifesto-left reveal">
+    <h2>Trasformare<br>lo stress in<br><em>energia cinetica</em></h2>
+    <p>La psicologia non è una cura. È un'architettura mentale che si costruisce con precisione tecnica, rigore scientifico e visione strategica. Per chi non accetta mai di fermarsi al secondo posto.</p>
+    <a href="#" class="cta-link">Scopri il metodo →</a>
+  </div>
+  <div class="manifesto-right reveal">
+    <div class="manifesto-card">
+      <span class="card-num">01 —</span>
+      <h3 class="card-title">Diagnosi Precisa</h3>
+      <p class="card-desc">Assessment psicologico avanzato per mappare con esattezza le aree di intervento e i pattern comportamentali.</p>
+    </div>
+    <div class="manifesto-card">
+      <span class="card-num">02 —</span>
+      <h3 class="card-title">Strategia Personalizzata</h3>
+      <p class="card-desc">Protocolli su misura costruiti per la singola persona, il team o l'organizzazione. Zero approcci generici.</p>
+    </div>
+    <div class="manifesto-card">
+      <span class="card-num">03 —</span>
+      <h3 class="card-title">Esecuzione Controllata</h3>
+      <p class="card-desc">Sessioni strutturate con obiettivi misurabili, kpi di progresso e feedback continuo sulle performance.</p>
+    </div>
+    <div class="manifesto-card">
+      <span class="card-num">04 —</span>
+      <h3 class="card-title">Risultati Reali</h3>
+      <p class="card-desc">Il successo non è soggettivo. Misurabile, documentabile, ripetibile: questo è l'unico standard accettabile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS STRIP -->
+<section id="pillars">
+  <div class="pillar-item reveal">
+    <span class="pillar-num">01</span>
+    <span class="pillar-name">Awareness</span>
+    <p class="pillar-desc">Consapevolezza profonda dei propri meccanismi mentali e comportamentali.</p>
+  </div>
+  <div class="pillar-item reveal">
+    <span class="pillar-num">02</span>
+    <span class="pillar-name">Wellbeing</span>
+    <p class="pillar-desc">Equilibrio psicologico come fondamenta di ogni performance sostenibile.</p>
+  </div>
+  <div class="pillar-item reveal">
+    <span class="pillar-num">03</span>
+    <span class="pillar-name">Performance</span>
+    <p class="pillar-desc">Massimizzazione delle risorse cognitive sotto pressione e in condizioni di stress.</p>
+  </div>
+  <div class="pillar-item reveal">
+    <span class="pillar-num">04</span>
+    <span class="pillar-name">Results</span>
+    <p class="pillar-desc">KPI misurabili, progressi tangibili e crescita mentale d'élite nel tempo.</p>
+  </div>
+</section>
+
+<!-- SECTORS ACCORDION -->
+<section id="sectors">
+  <p class="section-label">Ambiti di Intervento</p>
+  <h2 class="section-title reveal">Dove agisce<br>il <em>metodo</em></h2>
+  <div class="accordion-wrap">
+    <div class="acc-item active" data-index="0">
+      <div class="acc-bg"></div>
+      <div class="acc-accent"></div>
+      <div class="acc-content">
+        <div class="acc-icon">🏢</div>
+        <div class="acc-vertical-title">Aziende</div>
+        <div class="acc-desc">Leadership psychology, gestione del cambiamento organizzativo, prevenzione del burnout e costruzione di team ad alta performance. Per chi guida e chi aspira a guidare.</div>
+        <span class="acc-tag">Corporate & Leadership</span>
+      </div>
+    </div>
+    <div class="acc-item" data-index="1">
+      <div class="acc-bg"></div>
+      <div class="acc-accent"></div>
+      <div class="acc-content">
+        <div class="acc-icon">⚽</div>
+        <div class="acc-vertical-title">Club Sportivi</div>
+        <div class="acc-desc">Programmi di psicologia di squadra, coesione del gruppo, gestione della pressione agonistica e ottimizzazione delle dinamiche interne per staff e atleti.</div>
+        <span class="acc-tag">Team Performance</span>
+      </div>
+    </div>
+    <div class="acc-item" data-index="2">
+      <div class="acc-bg"></div>
+      <div class="acc-accent"></div>
+      <div class="acc-content">
+        <div class="acc-icon">🏆</div>
+        <div class="acc-vertical-title">Atleti</div>
+        <div class="acc-desc">Mental training individuale per atleti agonisti e professionisti. Focus, concentrazione, resilienza pre-gara e recupero psicologico post-infortunio.</div>
+        <span class="acc-tag">Elite Athletes</span>
+      </div>
+    </div>
+    <div class="acc-item" data-index="3">
+      <div class="acc-bg"></div>
+      <div class="acc-accent"></div>
+      <div class="acc-content">
+        <div class="acc-icon">💼</div>
+        <div class="acc-vertical-title">Lavoratori</div>
+        <div class="acc-desc">Supporto psicologico per professionisti: stress occupazionale, work-life balance, carriera e transizioni lavorative. Precisione senza compromessi.</div>
+        <span class="acc-tag">Professional Growth</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES PHYSICS -->
+<section id="values">
+  <div class="values-header">
+    <div>
+      <p class="section-label">I Valori del Metodo</p>
+      <h2 class="section-title reveal" style="margin-bottom:0">Le fondamenta<br>della <em>mente d'élite</em></h2>
+    </div>
+    <div class="values-note">Trascina le parole · Interactivo</div>
+  </div>
+  <canvas id="matter-canvas"></canvas>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stat-item reveal">
+    <span class="stat-num">12+</span>
+    <span class="stat-label">Anni di esperienza clinica e sportiva</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-num">400+</span>
+    <span class="stat-label">Atleti e professionisti seguiti</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-num">98%</span>
+    <span class="stat-label">Tasso di soddisfazione dei clienti</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-num">35+</span>
+    <span class="stat-label">Aziende e club sportivi partner</span>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <p class="section-label" style="color: var(--purple)">Il Metodo</p>
+  <h2 class="section-title reveal" style="color: var(--white)">Architettura<br><em style="color:var(--purple-light)">mentale</em> in 4 fasi</h2>
+  <div class="process-grid">
+    <div class="process-card" data-num="01">
+      <span class="process-step">Fase 01</span>
+      <h3 class="process-name">Assessment<br>Profondo</h3>
+      <p class="process-text">Colloquio diagnostico strutturato. Test psicologici validati. Mappatura precisa delle risorse e dei blocchi mentali esistenti.</p>
+    </div>
+    <div class="process-card" data-num="02">
+      <span class="process-step">Fase 02</span>
+      <h3 class="process-name">Strategia<br>su Misura</h3>
+      <p class="process-text">Progettazione di un piano d'intervento personalizzato con obiettivi misurabili, tempistiche definite e strumenti tecnici specifici.</p>
+    </div>
+    <div class="process-card" data-num="03">
+      <span class="process-step">Fase 03</span>
+      <h3 class="process-name">Training<br>Intensivo</h3>
+      <p class="process-text">Sessioni di mental training, tecniche di regolazione emotiva, visualizzazione, mindfulness applicata e cognitive restructuring.</p>
+    </div>
+    <div class="process-card" data-num="04">
+      <span class="process-step">Fase 04</span>
+      <h3 class="process-name">Performance<br>& Monitoraggio</h3>
+      <p class="process-text">Follow-up continuativo, verifica KPI, ottimizzazione del protocollo in base ai dati reali. La crescita mentale non finisce mai.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h2 class="footer-big">Pronto per il<br><span class="underline-purple">prossimo livello?</span></h2>
+  <a class="footer-email-link" href="mailto:ilaria@dammicco.it">ilaria@dammicco.it</a>
+  <div class="footer-bottom">
+    <div>
+      <div class="footer-logo-big">Ilaria Dammicco</div>
+      <div style="font-size:13px; color:#334155; margin-top:8px;">Psicologa del Lavoro & dello Sport</div>
+      <div style="font-size:12px; color:#1e293b; margin-top:4px;">Ordine Psicologi · N. XXXXX</div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-links-col">
+        <span class="footer-col-label">Servizi</span>
+        <a href="#" class="footer-link">Coaching Individuale</a>
+        <a href="#" class="footer-link">Mental Training</a>
+        <a href="#" class="footer-link">Consulenza Aziendale</a>
+        <a href="#" class="footer-link">Formazione</a>
+      </div>
+      <div class="footer-links-col">
+        <span class="footer-col-label">Legale</span>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Cookie Policy</a>
+        <a href="#" class="footer-link">Note Legali</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copy">© 2026 Ilaria Dammicco. Tutti i diritti riservati. P.IVA 01234567890</div>
+</footer>
+
+<script>
+// ===== CURSOR =====
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mx = -100, my = -100, rx = -100, ry = -100;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animCursor() {
+  cursor.style.left = (mx - 5) + 'px';
+  cursor.style.top = (my - 5) + 'px';
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  cursorRing.style.left = (rx - 18) + 'px';
+  cursorRing.style.top = (ry - 18) + 'px';
+  requestAnimationFrame(animCursor);
+}
+animCursor();
+
+// ===== NAV SCROLL =====
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ===== TYPEWRITER =====
+const tw = document.getElementById('typewriter-el');
+const words = ['Psicologa del Lavoro', 'Psicologa dello Sport', 'Formatrice', 'Mental Trainer'];
+let wi = 0, ci = 0, deleting = false;
+function runTypewriter() {
+  const word = words[wi];
+  let txt = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
+  tw.innerHTML = txt + '<span class="typewriter-cursor"></span>';
+  let spd = deleting ? 60 : 90;
+  if (!deleting && ci > word.length) { spd = 1800; deleting = true; }
+  else if (deleting && ci < 0) { deleting = false; wi = (wi + 1) % words.length; ci = 0; spd = 300; }
+  setTimeout(runTypewriter, spd);
+}
+runTypewriter();
+
+// ===== SCROLL REVEAL =====
+const reveals = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      revObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(r => revObs.observe(r));
+
+// ===== PARTICLE CANVAS (HERO) =====
+const pCanvas = document.getElementById('particle-canvas');
+const pCtx = pCanvas.getContext('2d');
+let particles = [];
+let pmx = 0, pmy = 0;
+
+function resizeParticle() {
+  pCanvas.width = pCanvas.offsetWidth;
+  pCanvas.height = pCanvas.offsetHeight;
+}
+window.addEventListener('resize', resizeParticle);
+resizeParticle();
+
+document.getElementById('hero').addEventListener('mousemove', e => {
+  pmx = e.clientX;
+  pmy = e.clientY;
+  for (let i = 0; i < 3; i++) {
+    particles.push({
+      x: pmx + (Math.random() - 0.5) * 40,
+      y: pmy + (Math.random() - 0.5) * 40,
+      vx: (Math.random() - 0.5) * 1.5,
+      vy: (Math.random() - 0.5) * 1.5 - 0.5,
+      life: 1,
+      size: Math.random() * 3 + 1,
+      hue: Math.random() > 0.5 ? '141,1,198' : '168,85,247'
+    });
+  }
+});
+
+function animParticles() {
+  pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+  particles = particles.filter(p => p.life > 0);
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.life -= 0.018;
+    p.size *= 0.98;
+    pCtx.beginPath();
+    pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    pCtx.fillStyle = `rgba(${p.hue}, ${p.life * 0.7})`;
+    pCtx.fill();
+  });
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+
+// ===== BUTTERFLY CANVAS =====
+const btCanvas = document.getElementById('butterfly-canvas');
+const btCtx = btCanvas.getContext('2d');
+btCanvas.width = window.innerWidth;
+btCanvas.height = window.innerHeight;
+window.addEventListener('resize', () => {
+  btCanvas.width = window.innerWidth;
+  btCanvas.height = window.innerHeight;
+});
+
+let scrollPct = 0;
+window.addEventListener('scroll', () => {
+  const hero = document.getElementById('hero');
+  scrollPct = Math.min(1, window.scrollY / (hero.offsetHeight || window.innerHeight));
+});
+
+const TRAIL_LEN = 160;
+let btTrail = [];
+
+function getButterflyPos(t) {
+  const cx = btCanvas.width / 2;
+  const cy = btCanvas.height / 2;
+  const scale = Math.min(btCanvas.width, btCanvas.height) * 0.28;
+  const t2 = t * Math.PI * 2;
+
+  // sinusoidal with 3 vortex loops
+  const loop1 = Math.sin(t2 * 3) * 0.18 * Math.sin(t2 * 0.5);
+  const loop2 = Math.cos(t2 * 5) * 0.12 * Math.sin(t2 * 0.7 + 1);
+  const loop3 = Math.sin(t2 * 7) * 0.08 * Math.cos(t2 * 0.3 + 2);
+
+  const butterfly = Math.sin(t2) * Math.exp(Math.cos(t2)) - 2 * Math.cos(t2 * 4) - Math.pow(Math.sin(t2 / 12), 5);
+  const r = (butterfly * 0.18 + 0.5 + loop1 + loop2 + loop3) * scale;
+
+  const angle = t2 + loop1 * 2;
+  return {
+    x: cx + r * Math.cos(angle),
+    y: cy + r * Math.sin(angle) * 0.6
+  };
+}
+
+let btT = 0;
+function animButterfly() {
+  btCtx.clearRect(0, 0, btCanvas.width, btCanvas.height);
+
+  if (scrollPct < 1) {
+    btT += 0.0015;
+    const pos = getButterflyPos(btT);
+    btTrail.push({ x: pos.x, y: pos.y, t: btT });
+    if (btTrail.length > TRAIL_LEN) btTrail.shift();
+
+    // Draw trail with 4 opacity bands
+    const bands = [
+      { startRatio: 0, endRatio: 0.25, alpha: 0.08, dash: [4, 8] },
+      { startRatio: 0.25, endRatio: 0.55, alpha: 0.2, dash: [6, 6] },
+      { startRatio: 0.55, endRatio: 0.8, alpha: 0.42, dash: [8, 4] },
+      { startRatio: 0.8, endRatio: 1.0, alpha: 0.65, dash: [12, 3] }
+    ];
+
+    bands.forEach(band => {
+      const start = Math.floor(btTrail.length * band.startRatio);
+      const end = Math.floor(btTrail.length * band.endRatio);
+      if (end - start < 2) return;
+      btCtx.beginPath();
+      btCtx.setLineDash(band.dash);
+      btCtx.strokeStyle = `rgba(141, 1, 198, ${band.alpha})`;
+      btCtx.lineWidth = 1.5;
+      btCtx.moveTo(btTrail[start].x, btTrail[start].y);
+      for (let i = start + 1; i < end; i++) {
+        btCtx.lineTo(btTrail[i].x, btTrail[i].y);
+      }
+      btCtx.stroke();
+    });
+    btCtx.setLineDash([]);
+
+    // Draw butterfly dot
+    const grd = btCtx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 10);
+    grd.addColorStop(0, 'rgba(168,85,247,0.9)');
+    grd.addColorStop(0.5, 'rgba(141,1,198,0.5)');
+    grd.addColorStop(1, 'rgba(141,1,198,0)');
+    btCtx.beginPath();
+    btCtx.arc(pos.x, pos.y, 10, 0, Math.PI * 2);
+    btCtx.fillStyle = grd;
+    btCtx.fill();
+    btCtx.beginPath();
+    btCtx.arc(pos.x, pos.y, 3, 0, Math.PI * 2);
+    btCtx.fillStyle = 'rgba(220,180,255,1)';
+    btCtx.fill();
+  }
+
+  requestAnimationFrame(animButterfly);
+}
+animButterfly();
+
+// ===== ACCORDION =====
+const accItems = document.querySelectorAll('.acc-item');
+accItems.forEach((item, idx) => {
+  item.addEventListener('click', () => {
+    accItems.forEach(a => a.classList.remove('active'));
+    item.classList.add('active');
+  });
+  item.addEventListener('mouseenter', () => {
+    if (!item.classList.contains('active')) item.style.flex = '1.2';
+  });
+  item.addEventListener('mouseleave', () => {
+    if (!item.classList.contains('active')) item.style.flex = '';
+  });
+});
+
+// ===== MATTER.JS PHYSICS =====
+(function setupMatter() {
+  const { Engine, Render, Runner, Bodies, Body, Composite, Mouse, MouseConstraint, Events } = Matter;
+
+  const canvas = document.getElementById('matter-canvas');
+  const W = canvas.offsetWidth || 800;
+  const H = canvas.offsetHeight || 480;
+  canvas.width = W;
+  canvas.height = H;
+
+  const engine = Engine.create({ gravity: { y: 0.8 } });
+  const render = Render.create({
+    canvas: canvas,
+    engine: engine,
+    options: {
+      width: W,
+      height: H,
+      wireframes: false,
+      background: '#0f172a'
+    }
+  });
+
+  const words = ['Focus', 'Resilienza', 'Performance', 'Fiducia', 'Controllo', 'Energia', 'Visione', 'Presione', 'Chiarezza', 'Disciplina'];
+  const colors = ['#8d01c6', '#1e293b', '#ffffff', '#7c3aed', '#334155', '#a855f7'];
+
+  const capsules = words.map((w, i) => {
+    const x = 80 + (i % 5) * (W / 5);
+    const y = 60 + Math.floor(i / 5) * 120;
+    const body = Bodies.rectangle(x, y, w.length * 13 + 36, 44, {
+      chamfer: { radius: 22 },
+      restitution: 0.55,
+      friction: 0.1,
+      frictionAir: 0.015,
+      render: {
+        fillStyle: colors[i % colors.length],
+        strokeStyle: 'rgba(141,1,198,0.3)',
+        lineWidth: 1
+      },
+      label: w
+    });
+    return body;
+  });
+
+  const ground = Bodies.rectangle(W / 2, H + 25, W, 50, { isStatic: true, render: { fillStyle: '#0f172a' } });
+  const wallL = Bodies.rectangle(-25, H / 2, 50, H, { isStatic: true, render: { fillStyle: '#0f172a' } });
+  const wallR = Bodies.rectangle(W + 25, H / 2, 50, H, { isStatic: true, render: { fillStyle: '#0f172a' } });
+  const ceiling = Bodies.rectangle(W / 2, -25, W, 50, { isStatic: true, render: { fillStyle: '#0f172a' } });
+
+  Composite.add(engine.world, [...capsules, ground, wallL, wallR, ceiling]);
+
+  const mouse = Mouse.create(render.canvas);
+  mouse.element.removeEventListener('mousewheel', mouse.mousewheel);
+  mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
+  const mc = MouseConstraint.create(engine, {
+    mouse,
+    constraint: { stiffness: 0.2, render: { visible: false } }
+  });
+  Composite.add(engine.world, mc);
+  render.mouse = mouse;
+
+  // Draw labels on capsules
+  Events.on(render, 'afterRender', () => {
+    const ctx = render.context;
+    capsules.forEach(body => {
+      const pos = body.position;
+      const angle = body.angle;
+      ctx.save();
+      ctx.translate(pos.x, pos.y);
+      ctx.rotate(angle);
+      ctx.font = '700 13px Inter';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const fill = body.render.fillStyle;
+      ctx.fillStyle = (fill === '#ffffff' || fill === '#a855f7') ? '#0f172a' : '#ffffff';
+      ctx.fillText(body.label, 0, 1);
+      ctx.restore();
+    });
+  });
+
+  Render.run(render);
+  const runner = Runner.create();
+  Runner.run(runner, engine);
+
+  // Observe intersection to start/stop
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      runner.enabled = e.isIntersecting;
+    });
+  }, { threshold: 0.1 });
+  obs.observe(canvas);
+})();
+
+// ===== STAT COUNTER ANIMATION =====
+function animateCount(el, target, suffix = '') {
+  let start = 0;
+  const isFloat = target.toString().includes('.');
+  const duration = 1800;
+  const startTime = performance.now();
+  function update(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const val = isFloat ? (eased * target).toFixed(1) : Math.floor(eased * target);
+    el.textContent = val + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const statNums = document.querySelectorAll('.stat-num');
+const statObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const raw = el.textContent;
+      const plus = raw.includes('+');
+      const pct = raw.includes('%');
+      const num = parseFloat(raw.replace(/[^0-9.]/g, ''));
+      const suffix = plus ? '+' : pct ? '%' : '';
+      animateCount(el, num, suffix);
+      statObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+statNums.forEach(n => statObs.observe(n));
+</script>
+</body>
+</html>

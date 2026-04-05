@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html class="light" lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ilaria Dammicco — Psicologa del Lavoro e dello Sport</title>
+<meta content="Psicologa specializzata in psicologia del lavoro e dello sport. Mental training per atleti d'élite e leader aziendali. Trasformo lo stress in energia cinetica." name="description"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-container": "#e5e9eb","primary-container": "#a855f7",
+          "on-error-container": "#510017","secondary-dim": "#4d4a7c",
+          "on-tertiary": "#1a1a1a","on-surface-variant": "#595c5e",
+          "tertiary-dim": "#1a1a1a","error": "#b41340","tertiary": "#1a1a1a",
+          "on-background": "#2c2f31","on-secondary": "#f5f1ff","surface": "#f5f7f9",
+          "on-surface": "#2c2f31","on-primary-container": "#2e006c",
+          "inverse-surface": "#0b0f10","outline": "#747779","secondary": "#595689",
+          "inverse-on-surface": "#9a9d9f","surface-container-highest": "#d9dde0",
+          "primary": "#8d01c6","on-tertiary-fixed-variant": "#1a1a1a",
+          "background": "#f5f7f9","outline-variant": "#abadaf","on-secondary-fixed": "#312e5f",
+          "secondary-fixed": "#d0ccff","surface-bright": "#f5f7f9","primary-dim": "#6b0196",
+          "tertiary-container": "#1a1a1a","primary-fixed-dim": "#a855f7",
+          "tertiary-fixed": "#1a1a1a","on-primary": "#ffffff","error-container": "#f74b6d",
+          "on-tertiary-fixed": "#1a1a1a","surface-container-lowest": "#ffffff",
+          "on-primary-fixed": "#000000","on-primary-fixed-variant": "#390083",
+          "on-secondary-container": "#444273","surface-dim": "#d0d5d8",
+          "surface-container-high": "#dfe3e6","on-secondary-fixed-variant": "#4e4b7d",
+          "secondary-container": "#d0ccff","tertiary-fixed-dim": "#1a1a1a",
+          "on-tertiary-container": "#1a1a1a","surface-container-low": "#eef1f3",
+          "primary-fixed": "#a855f7","error-dim": "#a70138","on-error": "#ffefef",
+          "secondary-fixed-dim": "#c2bef8","inverse-primary": "#a855f7",
+          "surface-tint": "#8d01c6","surface-variant": "#d9dde0"
+        },
+        fontFamily: { "headline": ["Manrope"], "body": ["Inter"], "label": ["Inter"] },
+        borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+      },
+    },
+  }
+</script>
+<link rel="stylesheet" href="css/styles.css"/>
+<link rel="stylesheet" href="css/hero.css"/>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-x-hidden">
+
+<!-- Page transition overlay -->
+<div id="page-transition-overlay"></div>
+
+<!-- Custom cursor -->
+<div id="custom-cursor-arrow">
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 1L24 14L14 17L11 24L4 1Z" fill="url(#cursorGrad)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-linejoin="round"/>
+    <defs>
+      <linearGradient id="cursorGrad" x1="4" y1="1" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#c084fc"/>
+        <stop offset="1" stop-color="#8d01c6"/>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+
+<div id="site-header" data-active="index"></div>
+
+<main class="page-content">
+  <!-- ═══════════════════  HERO  ═══════════════════ -->
+  <section id="hero">
+    <canvas id="hero-particle-canvas"></canvas>
+    <canvas id="bfly-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-tagline">
+        <div class="hero-tagline-dot"></div>
+        <div class="typewriter-text" id="typewriter"><span class="typewriter-cursor"></span></div>
+      </div>
+      <h1 class="hero-title" style="color:#ffffff !important;">
+        ILARIA<br>
+        <span class="purple-word" style="color:#8d01c6 !important;">DAMMICCO</span>
+      </h1>
+    </div>
+    <div class="hero-copy">
+      <p>Progetto percorsi di crescita mentale per atleti d'élite e leader aziendali. Trasformo lo stress in energia cinetica e la pressione in precisione architettonica.</p>
+    </div>
+    <div class="hero-bottom" style="justify-content:flex-end;">
+      <div class="hero-scroll-cta">
+        <div class="scroll-line"></div>
+        <span>SCROLL TO EXPLORE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  LOGO BAR  ═══════════════════ -->
+  <section id="logo-bar-section" style="background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;padding:40px 0;overflow:hidden;">
+    <div class="logo-bar-label-row" style="text-align:center;padding:0 40px;margin-bottom:20px;">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.12em;color:#94a3b8;text-transform:uppercase;">Partner &amp; Collaborazioni</span>
+    </div>
+    <div style="padding:0 40px;">
+      <div style="overflow:hidden;display:flex;">
+        <div class="logo-bar-track" style="display:flex;gap:56px;align-items:center;animation:marquee 18s linear infinite;flex-shrink:0;">
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">CONI</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">FIGC</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">PwC</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">Forbes</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">FISI</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">Deloitte</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">Serie A</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">ACI Sport</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">CONI</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">FIGC</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">PwC</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">Forbes</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">FISI</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">Deloitte</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">Serie A</span>
+          <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#94a3b8;opacity:0.45;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.3s ease;cursor:none;">ACI Sport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  AMBITI DI INTERVENTO  ═══════════════════ -->
+  <section class="py-24 bg-surface-container-low/30 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-label text-[10px] font-bold tracking-widest uppercase mb-4">
+          <span class="material-symbols-outlined text-sm" style='font-variation-settings:"FILL" 1;'>help</span>
+          Cosa Faccio
+        </span>
+        <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface mb-4">Ambiti di Intervento</h2>
+      </div>
+      <div class="flex flex-col md:flex-row gap-4 h-[600px] md:h-[500px]">
+        <div class="accordion-item relative bg-white rounded-[2rem] overflow-hidden group/card shadow-sm border border-white/40">
+          <div class="h-full w-full p-8 md:p-12 flex flex-col justify-center">
+            <div class="max-w-md transition-opacity duration-300 opacity-0 group-hover/card:opacity-100 group-[.active]/card:opacity-100">
+              <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover/card:bg-primary transition-colors duration-300">
+                <span class="material-symbols-outlined text-primary text-3xl group-hover/card:text-white transition-colors duration-300" style='font-variation-settings:"wght" 300;'>corporate_fare</span>
+              </div>
+              <h3 class="text-4xl font-headline font-extrabold text-on-surface mb-6">Aziende</h3>
+              <p class="text-on-surface-variant text-lg leading-relaxed mb-8">Ottimizzazione del clima organizzativo e gestione dello stress per team ad alte prestazioni.</p>
+              <a class="inline-flex items-center gap-2 text-primary font-headline font-bold group/link" href="percorsi.html">
+                <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-white transition-all"><span class="material-symbols-outlined text-xl">arrow_forward</span></span>
+                <span>Scopri di più sui percorsi per aziende</span>
+              </a>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-100 group-hover/card:opacity-0 group-[.active]/card:opacity-0 transition-opacity duration-300">
+              <span class="vertical-text font-headline font-extrabold text-2xl text-on-surface/40 tracking-widest uppercase">Aziende</span>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item relative bg-white rounded-[2rem] overflow-hidden group/card shadow-sm border border-white/40">
+          <div class="h-full w-full p-8 md:p-12 flex flex-col justify-center">
+            <div class="max-w-md transition-opacity duration-300 opacity-0 group-hover/card:opacity-100 group-[.active]/card:opacity-100">
+              <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover/card:bg-primary transition-colors duration-300">
+                <span class="material-symbols-outlined text-primary text-3xl group-hover/card:text-white transition-colors duration-300" style='font-variation-settings:"wght" 300;'>groups</span>
+              </div>
+              <h3 class="text-4xl font-headline font-extrabold text-on-surface mb-6">Società Sportive</h3>
+              <p class="text-on-surface-variant text-lg leading-relaxed mb-8">Sviluppo di programmi di mental training per settori giovanili e prime squadre.</p>
+              <a class="inline-flex items-center gap-2 text-primary font-headline font-bold group/link" href="percorsi.html">
+                <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-white transition-all"><span class="material-symbols-outlined text-xl">arrow_forward</span></span>
+                <span>Scopri di più sui percorsi per società</span>
+              </a>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-100 group-hover/card:opacity-0 group-[.active]/card:opacity-0 transition-opacity duration-300">
+              <span class="vertical-text font-headline font-extrabold text-2xl text-on-surface/40 tracking-widest uppercase whitespace-nowrap">Società Sportive</span>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item relative bg-white rounded-[2rem] overflow-hidden group/card shadow-sm border border-white/40 active">
+          <div class="h-full w-full p-8 md:p-12 flex flex-col justify-center">
+            <div class="max-w-md transition-opacity duration-300 opacity-0 group-hover/card:opacity-100 group-[.active]/card:opacity-100">
+              <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover/card:bg-primary transition-colors duration-300">
+                <span class="material-symbols-outlined text-primary text-3xl group-hover/card:text-white transition-colors duration-300" style='font-variation-settings:"wght" 300;'>fitness_center</span>
+              </div>
+              <h3 class="text-4xl font-headline font-extrabold text-on-surface mb-6">Atleti</h3>
+              <p class="text-on-surface-variant text-lg leading-relaxed mb-8">Percorsi individuali per il potenziamento della resilienza e la gestione della gara.</p>
+              <a class="inline-flex items-center gap-2 text-primary font-headline font-bold group/link" href="percorsi.html">
+                <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-white transition-all"><span class="material-symbols-outlined text-xl">arrow_forward</span></span>
+                <span>Scopri di più sui percorsi per atleti</span>
+              </a>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-100 group-hover/card:opacity-0 group-[.active]/card:opacity-0 transition-opacity duration-300">
+              <span class="vertical-text font-headline font-extrabold text-2xl text-on-surface/40 tracking-widest uppercase">Atleta</span>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item relative bg-white rounded-[2rem] overflow-hidden group/card shadow-sm border border-white/40">
+          <div class="h-full w-full p-8 md:p-12 flex flex-col justify-center">
+            <div class="max-w-md transition-opacity duration-300 opacity-0 group-hover/card:opacity-100 group-[.active]/card:opacity-100">
+              <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover/card:bg-primary transition-colors duration-300">
+                <span class="material-symbols-outlined text-primary text-3xl group-hover/card:text-white transition-colors duration-300" style='font-variation-settings:"wght" 300;'>person_celebrate</span>
+              </div>
+              <h3 class="text-4xl font-headline font-extrabold text-on-surface mb-6">Lavoratori</h3>
+              <p class="text-on-surface-variant text-lg leading-relaxed mb-8">Supporto psicologico per professionisti che affrontano burnout o transizioni di carriera.</p>
+              <a class="inline-flex items-center gap-2 text-primary font-headline font-bold group/link" href="percorsi.html">
+                <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-white transition-all"><span class="material-symbols-outlined text-xl">arrow_forward</span></span>
+                <span>Scopri di più sui percorsi professionali</span>
+              </a>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-100 group-hover/card:opacity-0 group-[.active]/card:opacity-0 transition-opacity duration-300">
+              <span class="vertical-text font-headline font-extrabold text-2xl text-on-surface/40 tracking-widest uppercase">Lavoratore</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  IL PERCORSO  ═══════════════════ -->
+  <section class="py-32 bg-surface-container-lowest">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-start mb-20">
+        <div>
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-label text-[10px] font-bold tracking-widest uppercase mb-6">
+            <span class="material-symbols-outlined text-sm" style='font-variation-settings:"FILL" 1;'>route</span>
+            Il Percorso
+          </span>
+          <h2 class="text-5xl md:text-6xl font-headline font-extrabold text-primary leading-tight tracking-tight">Il tuo percorso <br/>di crescita</h2>
+        </div>
+        <div class="lg:pt-14">
+          <p class="text-xl text-on-surface-variant font-light leading-relaxed">
+            Questo percorso è per te se vuoi trasformare la pressione in una risorsa strategica e raggiungere l'eccellenza attraverso un metodo scientifico e strutturato.
+          </p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div class="group">
+          <div class="mb-6 inline-block">
+            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-300">
+              <span class="material-symbols-outlined text-primary text-4xl group-hover:text-white transition-colors duration-300" style='font-variation-settings:"wght" 300;'>psychology</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-headline font-bold text-primary mb-4">Consapevolezza</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Riconoscere i propri punti di forza e le aree di miglioramento è il primo passo per ogni progresso.</p>
+        </div>
+        <div class="group">
+          <div class="mb-6 inline-block">
+            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-300">
+              <span class="material-symbols-outlined text-primary text-4xl group-hover:text-white transition-colors duration-300" style='font-variation-settings:"wght" 300;'>favorite</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-headline font-bold text-primary mb-4">Benessere</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">La performance d'eccellenza nasce da un equilibrio mentale e fisico solido.</p>
+        </div>
+        <div class="group">
+          <div class="mb-6 inline-block">
+            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-300">
+              <span class="material-symbols-outlined text-primary text-4xl group-hover:text-white transition-colors duration-300" style='font-variation-settings:"wght" 300;'>local_fire_department</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-headline font-bold text-primary mb-4">Prestazione</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Ottimizzare il focus e la gestione dello stress per raggiungere il peak state in ogni sfida.</p>
+        </div>
+        <div class="group">
+          <div class="mb-6 inline-block">
+            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-300">
+              <span class="material-symbols-outlined text-primary text-4xl group-hover:text-white transition-colors duration-300" style='font-variation-settings:"wght" 300;'>balance</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-headline font-bold text-primary mb-4">Risultati</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Trasformare il potenziale in successi tangibili, nello sport come in azienda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  BOOKING  ═══════════════════ -->
+  <section class="py-24 bg-surface-container-low overflow-hidden">
+    <div class="max-w-7xl mx-auto px-8 relative">
+      <div class="bg-primary-container/20 rounded-[2rem] p-12 md:p-20 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 opacity-10">
+          <span class="material-symbols-outlined text-[200px]" style='font-variation-settings:"wght" 100;'>calendar_today</span>
+        </div>
+        <div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-4xl font-headline font-extrabold mb-6 leading-tight">Il primo passo verso il <span class="text-primary italic">tuo peak state.</span></h2>
+            <p class="text-lg text-on-surface-variant mb-10 max-w-md">Prenota un colloquio conoscitivo di 20 minuti. Analizzeremo le tue sfide e definiremo i primi obiettivi concreti.</p>
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white shrink-0">1</div>
+                <div><h4 class="font-headline font-bold">Scegli la data</h4><p class="text-sm text-outline">Accedi al calendario digitale</p></div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white shrink-0">2</div>
+                <div><h4 class="font-headline font-bold">Conosciamoci</h4><p class="text-sm text-outline">Sessione video o telefonica gratuita</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-surface-container-lowest p-8 rounded-3xl shadow-2xl border border-white/50">
+            <div class="flex items-center justify-between mb-8">
+              <span class="font-headline font-bold text-xl" id="calendar-month-label"></span>
+              <div class="flex gap-2">
+                <button id="cal-prev" class="p-2 rounded-lg bg-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+                <button id="cal-next" class="p-2 rounded-lg bg-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+              </div>
+            </div>
+            <div class="grid grid-cols-7 gap-2 mb-8">
+              <div class="text-center text-xs font-bold text-outline py-2">LU</div>
+              <div class="text-center text-xs font-bold text-outline py-2">MA</div>
+              <div class="text-center text-xs font-bold text-outline py-2">ME</div>
+              <div class="text-center text-xs font-bold text-outline py-2">GI</div>
+              <div class="text-center text-xs font-bold text-outline py-2">VE</div>
+              <div class="text-center text-xs font-bold text-outline py-2">SA</div>
+              <div class="text-center text-xs font-bold text-outline py-2">DO</div>
+            </div>
+            <div class="grid grid-cols-7 gap-2 mb-8" id="calendar-days"></div>
+            <button class="w-full py-4 bg-primary text-on-primary rounded-xl font-headline font-bold shadow-lg hover:bg-primary-dim transition-all" onclick="window.location.href='prenotazione.html'">
+              Procedi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  PHYSICS VALUES  ═══════════════════ -->
+  <section class="py-24 bg-surface overflow-hidden" id="values-section">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 text-center md:text-left">
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase mb-5" style="color: var(--primary); font-family: 'Inter', sans-serif;">I Valori del Metodo</p>
+          <h2 class="text-5xl md:text-6xl font-headline font-extrabold leading-tight tracking-tight" style="color: var(--text-main); letter-spacing: -0.03em;">Le fondamenta<br>della <span style="color: var(--primary); font-style: normal;">mente d'élite</span></h2>
+        </div>
+        <div class="flex items-center gap-2 mt-6 md:mt-0" style="color: var(--text-muted); font-size: 13px;">
+          <div style="width: 6px; height: 6px; background: var(--primary); border-radius: 50%; flex-shrink: 0;"></div>
+          <span>Afferra e lancia le capsule. La mente si allena attraverso l'interazione.</span>
+        </div>
+      </div>
+      <canvas id="matter-canvas" class="w-full rounded-2xl border border-outline" style="height: 480px; background: var(--bg-dark); cursor: grab; display: block;"></canvas>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  STATS  ═══════════════════ -->
+  <section class="py-20" style="background: var(--primary);" id="stats-section">
+    <div class="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-0">
+      <div class="stat-item px-8 md:px-16 border-r border-white/20 last:border-r-0">
+        <span class="stat-num text-white font-headline font-black leading-none block" style="font-size: clamp(40px, 5vw, 64px); letter-spacing: -0.03em;">12+</span>
+        <span class="stat-label text-white/75 text-sm mt-3 block">Anni di esperienza clinica e sportiva</span>
+      </div>
+      <div class="stat-item px-8 md:px-16 border-r border-white/20 last:border-r-0">
+        <span class="stat-num text-white font-headline font-black leading-none block" style="font-size: clamp(40px, 5vw, 64px); letter-spacing: -0.03em;">400+</span>
+        <span class="stat-label text-white/75 text-sm mt-3 block">Atleti e professionisti seguiti</span>
+      </div>
+      <div class="stat-item px-8 md:px-16 border-r border-white/20 last:border-r-0">
+        <span class="stat-num text-white font-headline font-black leading-none block" style="font-size: clamp(40px, 5vw, 64px); letter-spacing: -0.03em;">98%</span>
+        <span class="stat-label text-white/75 text-sm mt-3 block">Tasso di soddisfazione dei clienti</span>
+      </div>
+      <div class="stat-item px-8 md:px-16">
+        <span class="stat-num text-white font-headline font-black leading-none block" style="font-size: clamp(40px, 5vw, 64px); letter-spacing: -0.03em;">35+</span>
+        <span class="stat-label text-white/75 text-sm mt-2 block">Aziende e club sportivi partner</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer" data-active="index"></div>
+
+<script src="js/navbar.js"></script>
+<script src="js/site-components.js"></script>
+<script src="js/calendar.js"></script>
+<script>
+/* ══════════════════════════════════════════
+   PAGE TRANSITIONS
+   ══════════════════════════════════════════ */
+ (function pageTransitions() {
+  var overlay = document.getElementById('page-transition-overlay');
+  if (!overlay) return;
+
+  document.querySelectorAll('a[href$=".html"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var href = this.href;
+      var main = document.querySelector('main.page-content');
+      if (main) main.classList.add('fading-out');
+      overlay.classList.add('entering');
+      sessionStorage.setItem('pt', '1');
+      setTimeout(function() { window.location.href = href; }, 500);
+    });
+  });
+
+  if (sessionStorage.getItem('pt') === '1') {
+    sessionStorage.removeItem('pt');
+    overlay.classList.add('leaving');
+    setTimeout(function() { overlay.classList.remove('leaving'); }, 550);
+  }
+})();
+
+/* ══════════════════════════════════════════
+   SCROLL REVEAL
+   ══════════════════════════════════════════ */
+(function scrollReveal() {
+  const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
+  if (!reveals.length) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  reveals.forEach(el => observer.observe(el));
+})();
+
+/* ══════════════════════════════════════════
+   ACTIVE NAV
+   ══════════════════════════════════════════ */
+(function activeNav() {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('nav a[href]').forEach(link => {
+    if (link.getAttribute('href') === currentPage) link.classList.add('nav-active');
+  });
+})();
+
+/* ══════════════════════════════════════════
+   EXISTING FUNCTIONALITY
+   ══════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ══════════════════════════════════════════
+  // CUSTOM CURSOR
+  // ══════════════════════════════════════════
+  (function customCursor() {
+    var arrow = document.getElementById('custom-cursor-arrow');
+    if (!arrow) return;
+
+    var mx = -100, my = -100;
+
+    document.addEventListener('mousemove', function(e) {
+      mx = e.clientX;
+      my = e.clientY;
+    });
+
+    document.addEventListener('touchstart', function() {
+      arrow.style.opacity = '0';
+    });
+
+    function animate() {
+      arrow.style.left = mx + 'px';
+      arrow.style.top = my + 'px';
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    var hoverTargets = 'a, button, input, textarea, .accordion-item, [role="button"], .stat-item, .process-card, .pillar-item, .manifesto-card, .acc-item';
+
+    document.addEventListener('mouseover', function(e) {
+      if (e.target.closest(hoverTargets)) {
+        arrow.classList.add('hovering');
+      } else {
+        arrow.classList.remove('hovering');
+      }
+    });
+  })();
+  document.querySelectorAll('.accordion-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
+  // ══════════════════════════════════════════
+  // MATTER.JS PHYSICS — Values capsules
+  // ══════════════════════════════════════════
+  (function setupMatter() {
+    var canvas = document.getElementById('matter-canvas');
+    if (!canvas) return;
+    var W = canvas.offsetWidth || 800;
+    var H = canvas.offsetHeight || 480;
+    canvas.width = W;
+    canvas.height = H;
+
+    var Engine = Matter.Engine, Render = Matter.Render, Runner = Matter.Runner;
+    var Bodies = Matter.Bodies, Body = Matter.Body, Composite = Matter.Composite;
+    var Mouse = Matter.Mouse, MouseConstraint = Matter.MouseConstraint, Events = Matter.Events;
+
+    var engine = Engine.create({ gravity: { y: 0.8 } });
+    var render = Render.create({
+      canvas: canvas,
+      engine: engine,
+      options: { width: W, height: H, wireframes: false, background: '#0f172a' }
+    });
+
+    var words = ['Focus', 'Resilienza', 'Performance', 'Fiducia', 'Controllo', 'Energia', 'Visione', 'Chiarezza', 'Disciplina', 'Equilibrio', 'Determinazione', 'Consapevolezza', 'Grinta', 'Precisione', 'Costanza', 'Potenziale'];
+    var colors = ['#8d01c6', '#1e293b', '#ffffff', '#7c3aed', '#334155', '#a855f7'];
+
+    // On mobile use only first 10 words
+    var isMobile = window.innerWidth < 768;
+    var activeWords = isMobile ? words.slice(0, 10) : words;
+
+    var capsules = activeWords.map(function(w, i) {
+      var wCapsule = w.length * 13 + 36;
+      var cols = 5;
+      var col = i % cols;
+      var row = Math.floor(i / cols);
+      var x = 60 + col * (W - 120) / (cols - 1) + (Math.random() - 0.5) * 30;
+      var y = 40 + row * 90 + (Math.random() - 0.5) * 20;
+      var angle = (Math.random() - 0.5) * 0.3;
+      var body = Bodies.rectangle(x, y, wCapsule, 44, {
+        chamfer: { radius: 22 },
+        angle: angle,
+        restitution: 0.4,
+        friction: 0.15,
+        frictionAir: 0.025,
+        density: 0.001,
+        render: {
+          fillStyle: colors[i % colors.length],
+          strokeStyle: 'rgba(141,1,198,0.3)',
+          lineWidth: 1
+        },
+        label: w
+      });
+      Body.setVelocity(body, {
+        x: (Math.random() - 0.5) * 1.5,
+        y: Math.random() * 0.5
+      });
+      return body;
+    });
+
+    var ground = Bodies.rectangle(W / 2, H + 25, W, 50, { isStatic: true, render: { fillStyle: '#0f172a' } });
+    var wallL = Bodies.rectangle(-25, H / 2, 50, H, { isStatic: true, render: { fillStyle: '#0f172a' } });
+    var wallR = Bodies.rectangle(W + 25, H / 2, 50, H, { isStatic: true, render: { fillStyle: '#0f172a' } });
+    var ceiling = Bodies.rectangle(W / 2, -25, W, 50, { isStatic: true, render: { fillStyle: '#0f172a' } });
+
+    Composite.add(engine.world, capsules.concat([ground, wallL, wallR, ceiling]));
+
+    var mouse = Mouse.create(render.canvas);
+    mouse.element.removeEventListener('mousewheel', mouse.mousewheel);
+    mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
+    var mc = MouseConstraint.create(engine, {
+      mouse: mouse,
+      constraint: { stiffness: 0.2, render: { visible: false } }
+    });
+    Composite.add(engine.world, mc);
+    render.mouse = mouse;
+
+    Events.on(render, 'afterRender', function() {
+      var ctx = render.context;
+      capsules.forEach(function(body) {
+        var pos = body.position;
+        var angle = body.angle;
+        ctx.save();
+        ctx.translate(pos.x, pos.y);
+        ctx.rotate(angle);
+        ctx.font = '700 13px Inter';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        var fill = body.render.fillStyle;
+        ctx.fillStyle = (fill === '#ffffff' || fill === '#a855f7') ? '#0f172a' : '#ffffff';
+        ctx.fillText(body.label, 0, 1);
+        ctx.restore();
+      });
+    });
+
+    Render.run(render);
+    var runner = Runner.create();
+    Runner.run(runner, engine);
+
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { runner.enabled = e.isIntersecting; });
+    }, { threshold: 0.1 });
+    obs.observe(canvas);
+  })();
+
+  // ══════════════════════════════════════════
+  // STAT COUNTER ANIMATION
+  // ══════════════════════════════════════════
+  function animateCount(el, target, suffix) {
+    var start = 0;
+    var isFloat = target.toString().includes('.');
+    var duration = 1800;
+    var startTime = performance.now();
+    function update(now) {
+      var progress = Math.min((now - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var val = isFloat ? (eased * target).toFixed(1) : Math.floor(eased * target);
+      el.textContent = val + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  var statNums = document.querySelectorAll('.stat-num');
+  if (statNums.length) {
+    var statObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          var el = e.target;
+          var raw = el.textContent;
+          var plus = raw.indexOf('+') !== -1;
+          var pct = raw.indexOf('%') !== -1;
+          var num = parseFloat(raw.replace(/[^0-9.]/g, ''));
+          var suffix = plus ? '+' : pct ? '%' : '';
+          animateCount(el, num, suffix);
+          statObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    statNums.forEach(function(n) { statObs.observe(n); });
+  }
+
+  // ══════════════════════════════════════════
+  // PARTICLE CANVAS (HERO)
+  // ══════════════════════════════════════════
+  (function heroParticles() {
+    var canvas = document.getElementById('hero-particle-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var pmx = 0, pmy = 0;
+
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    var hero = document.getElementById('hero');
+    if (hero) {
+      hero.addEventListener('mousemove', function(e) {
+        pmx = e.clientX;
+        pmy = e.clientY;
+        for (var i = 0; i < 3; i++) {
+          particles.push({
+            x: pmx + (Math.random() - 0.5) * 40,
+            y: pmy + (Math.random() - 0.5) * 40,
+            vx: (Math.random() - 0.5) * 1.5,
+            vy: (Math.random() - 0.5) * 1.5 - 0.5,
+            life: 1,
+            size: Math.random() * 3 + 1,
+            hue: Math.random() > 0.5 ? '141,1,198' : '168,85,247'
+          });
+        }
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles = particles.filter(function(p) { return p.life > 0; });
+      particles.forEach(function(p) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.018;
+        p.size *= 0.98;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + p.hue + ', ' + (p.life * 0.7) + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+
+  // ══════════════════════════════════════════
+  // BUTTERFLY CANVAS (copiacodice style)
+  // ══════════════════════════════════════════
+  (function butterfly() {
+    var canvas = document.getElementById('bfly-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    window.addEventListener('resize', function() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    var scrollPct = 0;
+    window.addEventListener('scroll', function() {
+      var hero = document.getElementById('hero');
+      scrollPct = Math.min(1, window.scrollY / (hero ? hero.offsetHeight : window.innerHeight));
+    });
+
+    var TRAIL_LEN = 160;
+    var trail = [];
+
+    function getButterflyPos(t) {
+      var cx = canvas.width / 2;
+      var cy = canvas.height / 2;
+      var scale = Math.min(canvas.width, canvas.height) * 0.28;
+      var t2 = t * Math.PI * 2;
+
+      // More sinuous: layered sine waves with phase offsets
+      var sway = Math.sin(t2 * 1.3) * 0.06 + Math.sin(t2 * 2.7 + 1.2) * 0.04;
+      var bob = Math.cos(t2 * 1.7 + 0.5) * 0.05 + Math.cos(t2 * 3.1 + 2.1) * 0.03;
+
+      var loop1 = Math.sin(t2 * 3) * 0.18 * Math.sin(t2 * 0.5);
+      var loop2 = Math.cos(t2 * 5) * 0.12 * Math.sin(t2 * 0.7 + 1);
+      var loop3 = Math.sin(t2 * 7) * 0.08 * Math.cos(t2 * 0.3 + 2);
+
+      var butterfly = Math.sin(t2) * Math.exp(Math.cos(t2)) - 2 * Math.cos(t2 * 4) - Math.pow(Math.sin(t2 / 12), 5);
+      var r = (butterfly * 0.18 + 0.5 + loop1 + loop2 + loop3) * scale;
+
+      var angle = t2 + loop1 * 2 + sway;
+      return {
+        x: cx + r * Math.cos(angle) + bob * scale * 0.3,
+        y: cy + r * Math.sin(angle) * 0.6 + sway * scale * 0.2
+      };
+    }
+
+    var btT = 0;
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (scrollPct < 1) {
+        btT += 0.0015;
+        var pos = getButterflyPos(btT);
+        trail.push({ x: pos.x, y: pos.y, t: btT });
+        if (trail.length > TRAIL_LEN) trail.shift();
+
+        var bands = [
+          { startRatio: 0, endRatio: 0.25, alpha: 0.08, dash: [4, 8] },
+          { startRatio: 0.25, endRatio: 0.55, alpha: 0.2, dash: [6, 6] },
+          { startRatio: 0.55, endRatio: 0.8, alpha: 0.42, dash: [8, 4] },
+          { startRatio: 0.8, endRatio: 1.0, alpha: 0.65, dash: [12, 3] }
+        ];
+
+        bands.forEach(function(band) {
+          var start = Math.floor(trail.length * band.startRatio);
+          var end = Math.floor(trail.length * band.endRatio);
+          if (end - start < 2) return;
+          ctx.beginPath();
+          ctx.setLineDash(band.dash);
+          ctx.strokeStyle = 'rgba(141, 1, 198, ' + band.alpha + ')';
+          ctx.lineWidth = 1.5;
+          ctx.moveTo(trail[start].x, trail[start].y);
+          for (var i = start + 1; i < end; i++) {
+            ctx.lineTo(trail[i].x, trail[i].y);
+          }
+          ctx.stroke();
+        });
+        ctx.setLineDash([]);
+
+        // Draw original butterfly SVG on canvas
+        var flapPhase = Math.sin(btT * 35) * 0.5 + 0.5;
+        var flapScale = 1 - flapPhase * 0.88;
+
+        // Glow behind butterfly
+        var glowGrd = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 40);
+        glowGrd.addColorStop(0, 'rgba(168,85,247,0.45)');
+        glowGrd.addColorStop(0.3, 'rgba(141,1,198,0.18)');
+        glowGrd.addColorStop(1, 'rgba(141,1,198,0)');
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 40, 0, Math.PI * 2);
+        ctx.fillStyle = glowGrd;
+        ctx.fill();
+
+        ctx.save();
+        ctx.translate(pos.x, pos.y);
+        // Rotation based on movement direction
+        if (trail.length > 2) {
+          var prev = trail[trail.length - 3];
+          var dx = pos.x - prev.x;
+          var dy = pos.y - prev.y;
+          var rot = Math.atan2(dy, dx);
+          ctx.rotate(rot + Math.PI / 2);
+        }
+
+        var sc = 1.1; // slight scale up
+        ctx.scale(sc, sc);
+
+        // LEFT WING (upper + lower)
+        ctx.save();
+        ctx.scale(flapScale, 1);
+        // Upper left wing
+        ctx.beginPath();
+        ctx.moveTo(0, -3);
+        ctx.bezierCurveTo(-6, -14, -20, -21, -19, -9);
+        ctx.bezierCurveTo(-18, -1, -6, -1, 0, -3);
+        ctx.closePath();
+        ctx.fillStyle = '#702ae1';
+        ctx.fill();
+        // Lower left wing
+        ctx.beginPath();
+        ctx.moveTo(0, 2);
+        ctx.bezierCurveTo(-12, 2, -22, 12, -17, 14);
+        ctx.bezierCurveTo(-12, 16, -4, 8, 0, 2);
+        ctx.closePath();
+        ctx.fillStyle = '#5a1dbf';
+        ctx.fill();
+        // Wing detail lines
+        ctx.strokeStyle = 'rgba(255,255,255,0.22)';
+        ctx.lineWidth = 0.7;
+        ctx.beginPath();
+        ctx.moveTo(-1, -4);
+        ctx.bezierCurveTo(-6, -10, -14, -15, -15, -9);
+        ctx.stroke();
+        ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+        ctx.lineWidth = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(-2, 4);
+        ctx.bezierCurveTo(-10, 6, -17, 11, -16, 13);
+        ctx.stroke();
+        // Dots on left wing
+        ctx.beginPath();
+        ctx.arc(-11, -6, 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.18)';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(-13, 9, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,200,100,0.25)';
+        ctx.fill();
+        ctx.restore();
+
+        // RIGHT WING (upper + lower)
+        ctx.save();
+        ctx.scale(flapScale, 1);
+        // Upper right wing
+        ctx.beginPath();
+        ctx.moveTo(0, -3);
+        ctx.bezierCurveTo(6, -14, 20, -21, 19, -9);
+        ctx.bezierCurveTo(18, -1, 6, -1, 0, -3);
+        ctx.closePath();
+        ctx.fillStyle = '#a67aff';
+        ctx.fill();
+        // Lower right wing
+        ctx.beginPath();
+        ctx.moveTo(0, 2);
+        ctx.bezierCurveTo(12, 2, 22, 12, 17, 14);
+        ctx.bezierCurveTo(12, 16, 4, 8, 0, 2);
+        ctx.closePath();
+        ctx.fillStyle = '#8b52e8';
+        ctx.fill();
+        // Wing detail lines
+        ctx.strokeStyle = 'rgba(255,255,255,0.22)';
+        ctx.lineWidth = 0.7;
+        ctx.beginPath();
+        ctx.moveTo(1, -4);
+        ctx.bezierCurveTo(6, -10, 14, -15, 15, -9);
+        ctx.stroke();
+        ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+        ctx.lineWidth = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(2, 4);
+        ctx.bezierCurveTo(10, 6, 17, 11, 16, 13);
+        ctx.stroke();
+        // Dots on right wing
+        ctx.beginPath();
+        ctx.arc(11, -6, 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.18)';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(13, 9, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,200,100,0.25)';
+        ctx.fill();
+        ctx.restore();
+
+        // BODY
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 2, 8.5, 0, 0, Math.PI * 2);
+        ctx.fillStyle = '#1a0040';
+        ctx.fill();
+
+        // HEAD
+        ctx.beginPath();
+        ctx.arc(0, -9.5, 2.4, 0, Math.PI * 2);
+        ctx.fillStyle = '#2e006c';
+        ctx.fill();
+
+        // ANTENNAE
+        ctx.strokeStyle = '#2e006c';
+        ctx.lineWidth = 0.9;
+        ctx.lineCap = 'round';
+        // Left antenna
+        ctx.beginPath();
+        ctx.moveTo(-1, -11);
+        ctx.quadraticCurveTo(-6, -17, -9, -20);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(-9, -20, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#702ae1';
+        ctx.fill();
+        // Right antenna
+        ctx.beginPath();
+        ctx.moveTo(1, -11);
+        ctx.quadraticCurveTo(6, -17, 9, -20);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(9, -20, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#a67aff';
+        ctx.fill();
+
+        ctx.restore();
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+
+  // ══════════════════════════════════════════
+  // TYPEWRITER
+  // ══════════════════════════════════════════
+  (function typewriter() {
+    var el = document.getElementById('typewriter');
+    if (!el) return;
+    var words = ['Psicologa del Lavoro', 'Psicologa dello Sport', 'Formatrice', 'Mental Trainer'];
+    var wi = 0, ci = 0, deleting = false;
+    function type() {
+      var word = words[wi];
+      var txt = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
+      el.innerHTML = txt + '<span class="typewriter-cursor"></span>';
+      var spd = deleting ? 60 : 90;
+      if (!deleting && ci > word.length) { spd = 1800; deleting = true; }
+      else if (deleting && ci < 0) { deleting = false; wi = (wi + 1) % words.length; ci = 0; spd = 300; }
+      setTimeout(type, spd);
+    }
+    type();
+  })();
+});
+</script>
+</body>
+</html>

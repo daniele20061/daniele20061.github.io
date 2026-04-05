@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="light" lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prenotazione | Ilaria Dammicco - Consulenza Gratuita</title>
+<meta content="Prenota la tua consulenza psicologica gratuita di 20 minuti con Ilaria Dammicco. Primo colloquio conoscitivo senza impegno per atleti, professionisti e aziende." name="description"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-container": "#e5e9eb","primary-container": "#a855f7",
+          "on-error-container": "#510017","secondary-dim": "#4d4a7c",
+          "on-tertiary": "#1a1a1a","on-surface-variant": "#595c5e",
+          "tertiary-dim": "#1a1a1a","error": "#b41340","tertiary": "#1a1a1a",
+          "on-background": "#2c2f31","on-secondary": "#f5f1ff","surface": "#f5f7f9",
+          "on-surface": "#2c2f31","on-primary-container": "#2e006c",
+          "inverse-surface": "#0b0f10","outline": "#747779","secondary": "#595689",
+          "inverse-on-surface": "#9a9d9f","surface-container-highest": "#d9dde0",
+          "primary": "#8d01c6","on-tertiary-fixed-variant": "#1a1a1a",
+          "background": "#f5f7f9","outline-variant": "#abadaf","on-secondary-fixed": "#312e5f",
+          "secondary-fixed": "#d0ccff","surface-bright": "#f5f7f9","primary-dim": "#6b0196",
+          "tertiary-container": "#1a1a1a","primary-fixed-dim": "#a855f7",
+          "tertiary-fixed": "#1a1a1a","on-primary": "#ffffff","error-container": "#f74b6d",
+          "on-tertiary-fixed": "#1a1a1a","surface-container-lowest": "#ffffff",
+          "on-primary-fixed": "#000000","on-primary-fixed-variant": "#390083",
+          "on-secondary-container": "#444273","surface-dim": "#d0d5d8",
+          "surface-container-high": "#dfe3e6","on-secondary-fixed-variant": "#4e4b7d",
+          "secondary-container": "#d0ccff","tertiary-fixed-dim": "#1a1a1a",
+          "on-tertiary-container": "#1a1a1a","surface-container-low": "#eef1f3",
+          "primary-fixed": "#a855f7","error-dim": "#a70138","on-error": "#ffefef",
+          "secondary-fixed-dim": "#c2bef8","inverse-primary": "#a855f7",
+          "surface-tint": "#8d01c6","surface-variant": "#d9dde0"
+        },
+        fontFamily: { "headline": ["Manrope"], "body": ["Inter"], "label": ["Inter"] },
+        borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+      },
+    },
+  }
+</script>
+<link href="css/styles.css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/hero.css"/>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-x-hidden">
+
+<!-- Page transition overlay -->
+<div id="page-transition-overlay"></div>
+
+<!-- Custom cursor -->
+<div id="custom-cursor-arrow">
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 1L24 14L14 17L11 24L4 1Z" fill="url(#cursorGrad)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-linejoin="round"/>
+    <defs>
+      <linearGradient id="cursorGrad" x1="8" y1="5" x2="32" y2="35" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#c084fc"/>
+        <stop offset="1" stop-color="#8d01c6"/>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+
+<div id="site-header" data-active="prenotazione"></div>
+
+<main class="page-content">
+
+  <section class="relative h-[55vh] min-h-[400px] flex items-center overflow-hidden"
+    style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOwvVq1onGnwdY_ajZqRwMtRBPgLJZY7Ql7ev4W2KB9BXFHkG-are8DbKKzsEHa8yM4FWi0678jc4XC3aRgEKQJesBE8xx8GKwJDdtpZLyBukhQ1n5rnvFwAIbHlLiFEWwFruxR1JxxNJL2F-U2eia0XGsiaMJ-ZzlgRzo6me7QB86zYJ98DSGX6wunLfOQsIFWlSBNXYyx5emcPsrz3sMCcMPycUBQ4yN8paVC1r0r_dka-lyb8V2IKEr29VG4cGp3Oa33LCCcwY');">
+    <div class="absolute inset-0 bg-primary/50 backdrop-brightness-[0.5] z-0"></div>
+    <div class="max-w-7xl mx-auto px-8 w-full relative z-10 text-white pt-20">
+      <div class="max-w-3xl space-y-4">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 font-label text-xs font-semibold tracking-widest uppercase">Primo Passo</span>
+        <h1 class="text-4xl md:text-6xl font-headline font-extrabold leading-[1.1] tracking-tight">
+          Prenota una <span class="text-primary-container">Consulenza</span>
+        </h1>
+        <p class="text-lg md:text-xl text-white/85 max-w-xl font-light leading-relaxed">
+          Il primo passo verso il tuo benessere mentale inizia qui. Prenota un colloquio conoscitivo gratuito e senza impegno.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-surface-container-low/30">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm border border-surface-variant/20">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-primary text-2xl">event_available</span>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-lg mb-1">1. Scegli la Data</h3>
+            <p class="text-sm text-on-surface-variant">Seleziona il giorno e l'orario che preferisci dal calendario. La disponibilità viene aggiornata in tempo reale.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm border border-surface-variant/20">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-primary text-2xl">person_add</span>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-lg mb-1">2. Compila i Dati</h3>
+            <p class="text-sm text-on-surface-variant">Inserisci le tue informazioni di contatto e una breve descrizione del motivo della richiesta.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm border border-surface-variant/20">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-lg mb-1">3. Conferma</h3>
+            <p class="text-sm text-on-surface-variant">Riceverai un'email di conferma con il link per la sessione video. Tutto pronto!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-surface-container-lowest">
+    <div class="max-w-7xl mx-auto px-8">
+      <div id="calendar-wrapper" class="bg-white rounded-3xl shadow-xl border border-surface-variant/20 p-8 md:p-12 min-h-[500px] flex flex-col items-center justify-center">
+        <div class="text-center space-y-4">
+          <span class="material-symbols-outlined text-primary text-6xl opacity-40">calendar_month</span>
+          <h2 class="text-2xl md:text-3xl font-headline font-bold text-on-surface">Calendario Disponibilità</h2>
+          <p class="text-on-surface-variant max-w-md mx-auto">Qui verrà integrato il sistema di prenotazione. Seleziona una data disponibile per fissare il tuo colloquio conoscitivo gratuito.</p>
+          <div class="pt-4">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-label text-sm font-semibold">
+              <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              Integrazione calendario in arrivo
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-label text-[10px] font-bold tracking-widest uppercase mb-6">Consulenza Gratuita</span>
+          <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface mb-6 leading-tight">
+            20 minuti per <span class="text-primary italic">conoscerci</span>
+          </h2>
+          <p class="text-lg text-on-surface-variant font-light leading-relaxed mb-8">
+            Il primo colloquio è un momento di ascolto reciproco, senza impegno. Mi racconterai le tue esigenze e ti spiegherò come posso aiutarti a raggiungere i tuoi obiettivi.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">check_circle</span>
+              <span class="text-on-surface-variant">Durata: 20 minuti</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">check_circle</span>
+              <span class="text-on-surface-variant">Modalità: videochiamata o telefono</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">check_circle</span>
+              <span class="text-on-surface-variant">Costo: completamente gratuito</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">check_circle</span>
+              <span class="text-on-surface-variant">Nessun impegno successivo</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-surface-variant/20">
+          <h3 class="font-headline font-bold text-xl mb-6">Perché è importante il primo colloquio?</h3>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <span class="font-headline font-bold text-primary text-sm">1</span>
+              </div>
+              <div>
+                <h4 class="font-headline font-semibold mb-1">Ascolto attivo</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Mi prendo il tempo per comprendere davvero la tua situazione, senza giudizi e con totale riservatezza.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <span class="font-headline font-bold text-primary text-sm">2</span>
+              </div>
+              <div>
+                <h4 class="font-headline font-semibold mb-1">Chiarezza sugli obiettivi</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Insieme identifichiamo i tuoi obiettivi e definiamo se e come posso esserti utile nel tuo percorso.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <span class="font-headline font-bold text-primary text-sm">3</span>
+              </div>
+              <div>
+                <h4 class="font-headline font-semibold mb-1">Proposta personalizzata</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Ti illustro un possibile percorso su misura, con tempi e modalità, lasciando a te ogni decisione.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-surface-container-lowest">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-label text-[10px] font-bold tracking-widest uppercase mb-4">Cosa Aspettarsi</span>
+        <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface mb-4">La Prima Chiamata</h2>
+        <p class="text-lg text-on-surface-variant max-w-2xl mx-auto font-light">Ecco cosa succederà durante il vostro primo incontro conoscitivo.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center group">
+          <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+            <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">videocam</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg mb-3">Connessione</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Ti invierò un link per la videochiamata. Basta un dispositivo con webcam e una connessione stabile.</p>
+        </div>
+        <div class="text-center group">
+          <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+            <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">record_voice_over</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg mb-3">Il Tuo Racconto</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Avrai tutto lo spazio per raccontarmi la tua situazione, le tue sfide e cosa ti aspetti dal percorso.</p>
+        </div>
+        <div class="text-center group">
+          <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+            <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">psychology</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg mb-3">Analisi Iniziale</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Ti offrirò una prima lettura della situazione e ti indicherò le possibili direzioni di intervento.</p>
+        </div>
+        <div class="text-center group">
+          <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+            <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">route</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg mb-3">Prossimi Passi</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Se lo desideri, definiremo insieme un piano d'azione concreto. Senza alcuna pressione o obbligo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-surface-container-low">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="bg-primary/5 rounded-3xl p-8 md:p-12 border border-primary/10">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-3xl font-headline font-extrabold text-on-surface mb-4">Domande Frequenti</h2>
+            <p class="text-on-surface-variant">Hai dubbi? Ecco le risposte più comuni.</p>
+          </div>
+          <div class="space-y-3">
+            <div class="faq-item bg-white rounded-xl shadow-sm border border-surface-variant/20 overflow-hidden">
+              <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-5 text-left" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? '1fr' : '0fr';">
+                <span>Devo preparare qualcosa prima?</span>
+                <span class="material-symbols-outlined text-primary faq-icon" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+              </button>
+              <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+                <div class="overflow-hidden">
+                  <p class="px-5 pb-5 text-sm text-on-surface-variant leading-relaxed">No, non serve alcuna preparazione. Vieni con la tranquillità di essere te stesso/a.</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item bg-white rounded-xl shadow-sm border border-surface-variant/20 overflow-hidden">
+              <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-5 text-left" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? '1fr' : '0fr';">
+                <span>La consulenza è davvero gratuita?</span>
+                <span class="material-symbols-outlined text-primary faq-icon" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+              </button>
+              <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+                <div class="overflow-hidden">
+                  <p class="px-5 pb-5 text-sm text-on-surface-variant leading-relaxed">Assolutamente sì. Il primo colloquio di 20 minuti è completamente gratuito e senza alcun impegno.</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item bg-white rounded-xl shadow-sm border border-surface-variant/20 overflow-hidden">
+              <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-5 text-left" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? '1fr' : '0fr';">
+                <span>Cosa succede dopo la chiamata?</span>
+                <span class="material-symbols-outlined text-primary faq-icon" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+              </button>
+              <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+                <div class="overflow-hidden">
+                  <p class="px-5 pb-5 text-sm text-on-surface-variant leading-relaxed">Se entrambi lo riteniamo utile, potremo definire un percorso personalizzato. La scelta è sempre e solo tua.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-surface-container-lowest">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="bg-primary rounded-[2rem] p-12 md:p-20 text-center relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 opacity-10">
+          <span class="material-symbols-outlined text-white text-[200px]" style='font-variation-settings:"wght" 100;'>calendar_today</span>
+        </div>
+        <div class="relative z-10">
+          <h2 class="text-3xl md:text-5xl font-headline font-extrabold text-white mb-6 leading-tight">
+            Pronto/a a fare il primo passo?
+          </h2>
+          <p class="text-lg text-white/80 max-w-xl mx-auto mb-10 font-light">
+            Non aspettare che lo stress diventi insostenibile. Prenota oggi la tua consulenza gratuita e inizia a investire sul tuo benessere mentale.
+          </p>
+          <button class="px-10 py-4 bg-white text-primary rounded-xl font-headline font-bold text-lg shadow-xl hover:bg-surface-container-low transition-all hover:-translate-y-0.5" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+            Prenota Ora — È Gratuito
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer" data-active="prenotazione"></div>
+
+<script src="js/navbar.js"></script>
+<script src="js/site-components.js"></script>
+<script src="js/calendar.js"></script>
+<script>
+/* ══════════════════════════════════════════
+   PAGE TRANSITION SYSTEM
+   ══════════════════════════════════════════ */
+ (function pageTransitions() {
+  var overlay = document.getElementById('page-transition-overlay');
+  if (!overlay) return;
+
+  document.querySelectorAll('a[href$=".html"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var href = this.href;
+      var main = document.querySelector('main.page-content');
+      if (main) main.classList.add('fading-out');
+      overlay.classList.add('entering');
+      sessionStorage.setItem('pt', '1');
+      setTimeout(function() { window.location.href = href; }, 500);
+    });
+  });
+
+  if (sessionStorage.getItem('pt') === '1') {
+    sessionStorage.removeItem('pt');
+    overlay.classList.add('leaving');
+    setTimeout(function() { overlay.classList.remove('leaving'); }, 550);
+  }
+})();
+
+/* ══════════════════════════════════════════
+   SCROLL REVEAL ANIMATIONS
+   ══════════════════════════════════════════ */
+(function scrollReveal() {
+  var reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
+  if (!reveals.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+})();
+
+/* ══════════════════════════════════════════
+   EXISTING FUNCTIONALITY
+   ══════════════════════════════════════════ */
+  // ══════════════════════════════════════════
+  // CUSTOM CURSOR
+  // ══════════════════════════════════════════
+  (function customCursor() {
+    var arrow = document.getElementById('custom-cursor-arrow');
+    if (!arrow) return;
+    var mx = -100, my = -100;
+    document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
+    document.addEventListener('touchstart', function() { arrow.style.opacity = '0'; });
+    function animate() { arrow.style.left = mx + 'px'; arrow.style.top = my + 'px'; requestAnimationFrame(animate); }
+    animate();
+    var hoverTargets = 'a, button, input, textarea, .accordion-item, [role="button"], .stat-item, .process-card, .pillar-item, .manifesto-card, .acc-item';
+    document.addEventListener('mouseover', function(e) {
+      if (e.target.closest(hoverTargets)) arrow.classList.add('hovering');
+      else arrow.classList.remove('hovering');
+    });
+  })();
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.accordion-item').forEach(function(item) {
+    item.addEventListener('mouseenter', function() {
+      document.querySelectorAll('.accordion-item').forEach(function(i) { i.classList.remove('active'); });
+      item.classList.add('active');
+    });
+  });
+});
+</script>
+</body>
+</html>
