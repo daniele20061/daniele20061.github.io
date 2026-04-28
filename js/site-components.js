@@ -11,7 +11,7 @@
       '    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">\n' +
       '      <div class="md:col-span-1">\n' +
       '        <div class="font-headline font-bold text-2xl text-slate-900 mb-6">Ilaria Dammicco</div>\n' +
-      '        <p class="text-sm text-slate-500 mb-8 leading-relaxed">Psicologia applicata alla performance. Risultati tangibili attraverso l\'architettura mentale.</p>\n' +
+      '        <p class="text-sm text-slate-500 mb-8 leading-relaxed">Psicologia della performance tra sport e lavoro.\nTrasformo stress e pressione in strumenti di crescita e risultato.</p>\n' +
       '        <div class="flex gap-4">\n' +
       '          <a class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all" href="https://www.linkedin.com/in/ilaria-dammicco-b639a7195/" target="_blank" rel="noopener noreferrer">\n' +
       '            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22.23 0H1.77C.8 0 0 .8 0 1.77v20.46C0 23.2.8 24 1.77 24h20.46c.98 0 1.77-.8 1.77-1.77V1.77C24 .8 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.58c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56v-5.61c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.15 1.46-2.15 2.96v5.71h-3.56V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.37 4.27 5.46v6.28z"/></svg>\n' +
@@ -39,10 +39,10 @@
       '      </div>\n' +
       '      <div class="md:col-span-1">\n' +
       '        <h4 class="font-headline font-bold text-slate-900 mb-6">Newsletter</h4>\n' +
-      '        <p class="text-xs text-slate-500 mb-4">Ricevi approfondimenti sulla psicologia della performance.</p>\n' +
-      '        <div class="space-y-3">\n' +
-      '          <input class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="latua@email.it" type="email"/>\n' +
-      '          <button class="w-full py-3 bg-slate-900 text-white rounded-xl font-headline font-bold text-sm hover:bg-slate-800 transition-all">Iscriviti</button>\n' +
+'        <p class="text-xs text-slate-500 mb-4">Ricevi approfondimenti, strumenti e riflessioni sulla mente in azione: nello sport, nel lavoro, nella vita.</p>\n' +
+       '        <div class="space-y-3">\n' +
+       '          <input class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="latua@email.it" type="email"/>\n' +
+       '          <button class="w-full py-3 bg-slate-900 text-white rounded-xl font-headline font-bold text-sm hover:bg-slate-800 transition-all">Ricevi i prossimi contenuti</button>\n' +
       '        </div>\n' +
       '      </div>\n' +
       '    </div>\n' +
