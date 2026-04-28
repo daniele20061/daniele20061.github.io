@@ -348,35 +348,35 @@ Ti basterà collegarti da un dispositivo con connessione stabile.
         <div class="grid md:grid-cols-2 gap-6">
           <!-- Prima del colloquio -->
           <div class="faq-category">
-            <button class="faq-cat-toggle w-full flex items-center justify-between p-5 bg-white rounded-2xl border border-surface-variant/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300" onclick="this.classList.toggle('active'); const content = this.nextElementSibling; content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px'; this.querySelector('.faq-cat-icon').style.transform = this.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';">
+            <button class="faq-cat-toggle w-full flex items-center justify-between p-5 bg-white rounded-2xl border border-surface-variant/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all" data-faq-toggle>
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                   <span class="material-symbols-outlined text-primary" style='font-variation-settings:"wght" 300;'>event_available</span>
                 </div>
                 <span class="font-headline font-semibold text-on-surface">Prima del colloquio</span>
               </div>
-              <span class="material-symbols-outlined text-primary faq-cat-icon transition-transform duration-300">expand_more</span>
+              <span class="material-symbols-outlined text-primary faq-cat-icon transition-transform">expand_more</span>
             </button>
-            <div class="faq-cat-content max-h-0 overflow-hidden transition-all duration-300">
-              <div class="pt-4 space-y-3 min-h-0">
-                <div class="faq-item bg-white rounded-xl border border-surface-variant/20 overflow-hidden">
-                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? 'minmax(0, 1fr)' : '0fr';">
+            <div class="faq-cat-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+              <div class="overflow-hidden pt-4 space-y-3">
+                <div class="faq-item bg-white rounded-xl border border-surface-variant/20">
+                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" data-faq-item-btn>
                     <span class="text-sm pr-2">Devo preparare qualcosa prima?</span>
-                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform duration-300" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform">expand_more</span>
                   </button>
-                  <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
-                    <div class="overflow-hidden min-h-0">
+                  <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+                    <div class="overflow-hidden">
                       <p class="px-4 pb-4 text-sm text-on-surface-variant leading-relaxed">No, non è necessario preparare nulla. Ti basterà presentarti alla chiamata. Se vuoi, puoi riflettere su cosa ti sta creando più difficoltà in questo momento.</p>
                     </div>
                   </div>
                 </div>
-                <div class="faq-item bg-white rounded-xl border border-surface-variant/20 overflow-hidden">
-                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? 'minmax(0, 1fr)' : '0fr';">
+                <div class="faq-item bg-white rounded-xl border border-surface-variant/20">
+                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" data-faq-item-btn>
                     <span class="text-sm pr-2">E se non so bene qual è il mio problema?</span>
-                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform duration-300" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform">expand_more</span>
                   </button>
-                  <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
-                    <div class="overflow-hidden min-h-0">
+                  <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+                    <div class="overflow-hidden">
                       <p class="px-4 pb-4 text-sm text-on-surface-variant leading-relaxed">È normale. Il primo incontro serve proprio a fare chiarezza e capire insieme da dove partire.</p>
                     </div>
                   </div>
@@ -387,46 +387,46 @@ Ti basterà collegarti da un dispositivo con connessione stabile.
 
           <!-- Il colloquio -->
           <div class="faq-category">
-            <button class="faq-cat-toggle w-full flex items-center justify-between p-5 bg-white rounded-2xl border border-surface-variant/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300" onclick="this.classList.toggle('active'); const content = this.nextElementSibling; content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px'; this.querySelector('.faq-cat-icon').style.transform = this.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';">
+            <button class="faq-cat-toggle w-full flex items-center justify-between p-5 bg-white rounded-2xl border border-surface-variant/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all" data-faq-toggle>
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                   <span class="material-symbols-outlined text-primary" style='font-variation-settings:"wght" 300;'>phone_in_talk</span>
                 </div>
                 <span class="font-headline font-semibold text-on-surface">Il colloquio</span>
               </div>
-              <span class="material-symbols-outlined text-primary faq-cat-icon transition-transform duration-300">expand_more</span>
+              <span class="material-symbols-outlined text-primary faq-cat-icon transition-transform">expand_more</span>
             </button>
-            <div class="faq-cat-content max-h-0 overflow-hidden transition-all duration-300">
-              <div class="pt-4 space-y-3 min-h-0">
-                <div class="faq-item bg-white rounded-xl border border-surface-variant/20 overflow-hidden">
-                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? 'minmax(0, 1fr)' : '0fr';">
+            <div class="faq-cat-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+              <div class="overflow-hidden pt-4 space-y-3">
+                <div class="faq-item bg-white rounded-xl border border-surface-variant/20">
+                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" data-faq-item-btn>
                     <span class="text-sm pr-2">La consulenza è davvero gratuita?</span>
-                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform duration-300" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform">expand_more</span>
                   </button>
-                  <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
-                    <div class="overflow-hidden min-h-0">
+                  <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+                    <div class="overflow-hidden">
                       <p class="px-4 pb-4 text-sm text-on-surface-variant leading-relaxed">Sì, il primo colloquio di 20 minuti è completamente gratuito e senza alcun obbligo di proseguire.</p>
                     </div>
                   </div>
                 </div>
-                <div class="faq-item bg-white rounded-xl border border-surface-variant/20 overflow-hidden">
-                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? 'minmax(0, 1fr)' : '0fr';">
+                <div class="faq-item bg-white rounded-xl border border-surface-variant/20">
+                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" data-faq-item-btn>
                     <span class="text-sm pr-2">Cosa succede dopo la chiamata?</span>
-                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform duration-300" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform">expand_more</span>
                   </button>
-                  <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
-                    <div class="overflow-hidden min-h-0">
+                  <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+                    <div class="overflow-hidden">
                       <p class="px-4 pb-4 text-sm text-on-surface-variant leading-relaxed">Alla fine del colloquio avrai maggiore chiarezza sulla tua situazione. Se lo vorrai, ti proporrò un possibile percorso su misura. La decisione sarà sempre tua, senza pressione.</p>
                     </div>
                   </div>
                 </div>
-                <div class="faq-item bg-white rounded-xl border border-surface-variant/20 overflow-hidden">
-                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? 'minmax(0, 1fr)' : '0fr';">
+                <div class="faq-item bg-white rounded-xl border border-surface-variant/20">
+                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" data-faq-item-btn>
                     <span class="text-sm pr-2">Quello che dirò resterà riservato?</span>
-                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform duration-300" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform">expand_more</span>
                   </button>
-                  <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
-                    <div class="overflow-hidden min-h-0">
+                  <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+                    <div class="overflow-hidden">
                       <p class="px-4 pb-4 text-sm text-on-surface-variant leading-relaxed">Assolutamente sì. Tutto ciò che condividi è trattato con la massima riservatezza e nel rispetto della deontologia professionale.</p>
                     </div>
                   </div>
@@ -437,46 +437,46 @@ Ti basterà collegarti da un dispositivo con connessione stabile.
 
           <!-- Il percorso -->
           <div class="faq-category">
-            <button class="faq-cat-toggle w-full flex items-center justify-between p-5 bg-white rounded-2xl border border-surface-variant/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300" onclick="this.classList.toggle('active'); const content = this.nextElementSibling; content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px'; this.querySelector('.faq-cat-icon').style.transform = this.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';">
+            <button class="faq-cat-toggle w-full flex items-center justify-between p-5 bg-white rounded-2xl border border-surface-variant/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all" data-faq-toggle>
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                   <span class="material-symbols-outlined text-primary" style='font-variation-settings:"wght" 300;'>route</span>
                 </div>
                 <span class="font-headline font-semibold text-on-surface">Il percorso</span>
               </div>
-              <span class="material-symbols-outlined text-primary faq-cat-icon transition-transform duration-300">expand_more</span>
+              <span class="material-symbols-outlined text-primary faq-cat-icon transition-transform">expand_more</span>
             </button>
-            <div class="faq-cat-content max-h-0 overflow-hidden transition-all duration-300">
-              <div class="pt-4 space-y-3 min-h-0">
-                <div class="faq-item bg-white rounded-xl border border-surface-variant/20 overflow-hidden">
-                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? 'minmax(0, 1fr)' : '0fr';">
+            <div class="faq-cat-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+              <div class="overflow-hidden pt-4 space-y-3">
+                <div class="faq-item bg-white rounded-xl border border-surface-variant/20">
+                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" data-faq-item-btn>
                     <span class="text-sm pr-2">A chi è rivolto il percorso?</span>
-                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform duration-300" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform">expand_more</span>
                   </button>
-                  <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
-                    <div class="overflow-hidden min-h-0">
+                  <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+                    <div class="overflow-hidden">
                       <p class="px-4 pb-4 text-sm text-on-surface-variant leading-relaxed">Lavoro con atleti, professionisti e organizzazioni che vogliono migliorare la propria performance, gestire lo stress e sviluppare una struttura mentale più efficace.</p>
                     </div>
                   </div>
                 </div>
-                <div class="faq-item bg-white rounded-xl border border-surface-variant/20 overflow-hidden">
-                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? 'minmax(0, 1fr)' : '0fr';">
+                <div class="faq-item bg-white rounded-xl border border-surface-variant/20">
+                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" data-faq-item-btn>
                     <span class="text-sm pr-2">Quanto dura un percorso?</span>
-                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform duration-300" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform">expand_more</span>
                   </button>
-                  <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
-                    <div class="overflow-hidden min-h-0">
+                  <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+                    <div class="overflow-hidden">
                       <p class="px-4 pb-4 text-sm text-on-surface-variant leading-relaxed">Dipende dagli obiettivi e dalla situazione. I percorsi vengono costruiti su misura e possono variare da poche settimane a diversi mesi.</p>
                     </div>
                   </div>
                 </div>
-                <div class="faq-item bg-white rounded-xl border border-surface-variant/20 overflow-hidden">
-                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? 'minmax(0, 1fr)' : '0fr';">
+                <div class="faq-item bg-white rounded-xl border border-surface-variant/20">
+                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" data-faq-item-btn>
                     <span class="text-sm pr-2">Le sessioni sono online o in presenza?</span>
-                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform duration-300" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform">expand_more</span>
                   </button>
-                  <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
-                    <div class="overflow-hidden min-h-0">
+                  <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+                    <div class="overflow-hidden">
                       <p class="px-4 pb-4 text-sm text-on-surface-variant leading-relaxed">Entrambe. Possiamo lavorare online oppure in presenza, in base alle esigenze.</p>
                     </div>
                   </div>
@@ -487,35 +487,35 @@ Ti basterà collegarti da un dispositivo con connessione stabile.
 
           <!-- Approccio e benefici -->
           <div class="faq-category">
-            <button class="faq-cat-toggle w-full flex items-center justify-between p-5 bg-white rounded-2xl border border-surface-variant/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300" onclick="this.classList.toggle('active'); const content = this.nextElementSibling; content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px'; this.querySelector('.faq-cat-icon').style.transform = this.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';">
+            <button class="faq-cat-toggle w-full flex items-center justify-between p-5 bg-white rounded-2xl border border-surface-variant/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all" data-faq-toggle>
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                   <span class="material-symbols-outlined text-primary" style='font-variation-settings:"wght" 300;'>psychology</span>
                 </div>
                 <span class="font-headline font-semibold text-on-surface">Approccio e benefici</span>
               </div>
-              <span class="material-symbols-outlined text-primary faq-cat-icon transition-transform duration-300">expand_more</span>
+              <span class="material-symbols-outlined text-primary faq-cat-icon transition-transform">expand_more</span>
             </button>
-            <div class="faq-cat-content max-h-0 overflow-hidden transition-all duration-300">
-              <div class="pt-4 space-y-3 min-h-0">
-                <div class="faq-item bg-white rounded-xl border border-surface-variant/20 overflow-hidden">
-                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? 'minmax(0, 1fr)' : '0fr';">
+            <div class="faq-cat-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+              <div class="overflow-hidden pt-4 space-y-3">
+                <div class="faq-item bg-white rounded-xl border border-surface-variant/20">
+                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" data-faq-item-btn>
                     <span class="text-sm pr-2">In cosa è diverso il tuo approccio?</span>
-                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform duration-300" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform">expand_more</span>
                   </button>
-                  <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
-                    <div class="overflow-hidden min-h-0">
+                  <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+                    <div class="overflow-hidden">
                       <p class="px-4 pb-4 text-sm text-on-surface-variant leading-relaxed">Integro psicologia del lavoro e dello sport, utilizzando tecniche di mental training applicate alla performance. Lavoro su metodo, struttura mentale e risultati concreti.</p>
                     </div>
                   </div>
                 </div>
-                <div class="faq-item bg-white rounded-xl border border-surface-variant/20 overflow-hidden">
-                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" onclick="this.parentElement.classList.toggle('open'); this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; var c = this.parentElement.querySelector('.faq-content'); c.style.gridTemplateRows = this.parentElement.classList.contains('open') ? 'minmax(0, 1fr)' : '0fr';">
+                <div class="faq-item bg-white rounded-xl border border-surface-variant/20">
+                  <button class="faq-toggle w-full font-headline font-semibold cursor-pointer flex justify-between items-center p-4 text-left hover:bg-surface-subtle transition-colors" data-faq-item-btn>
                     <span class="text-sm pr-2">Posso ottenere benefici già dal primo incontro?</span>
-                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform duration-300" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">expand_more</span>
+                    <span class="material-symbols-outlined text-primary faq-icon text-lg shrink-0 transition-transform">expand_more</span>
                   </button>
-                  <div class="faq-content" style="display:grid; grid-template-rows:0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
-                    <div class="overflow-hidden min-h-0">
+                  <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300">
+                    <div class="overflow-hidden">
                       <p class="px-4 pb-4 text-sm text-on-surface-variant leading-relaxed">Il primo incontro serve soprattutto a fare chiarezza e vedere la situazione da una prospettiva diversa: per alcune persone è già un primo passo importante, per altre è l'inizio di un lavoro più strutturato. Tuttavia, l'impatto dipende dalla persona, dal contesto e dagli obiettivi. Il vero lavoro si sviluppa nel percorso.</p>
                     </div>
                   </div>
@@ -556,6 +556,29 @@ Ti basterà collegarti da un dispositivo con connessione stabile.
 <script src="js/navbar.js"></script>
 <script src="js/site-components.js"></script>
 <script src="js/monthly-calendar.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('[data-faq-toggle]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var content = this.nextElementSibling;
+      var isActive = this.classList.toggle('active');
+      content.style.gridTemplateRows = isActive ? '1fr' : '0fr';
+      var icon = this.querySelector('.faq-cat-icon');
+      if(icon) icon.style.transform = isActive ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+  });
+  document.querySelectorAll('[data-faq-item-btn]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var content = this.nextElementSibling;
+      var isActive = this.classList.toggle('active');
+      content.style.gridTemplateRows = isActive ? '1fr' : '0fr';
+      var icon = this.querySelector('.faq-icon');
+      if(icon) icon.style.transform = isActive ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+  });
+});
+</script>
 <script>
 /* ══════════════════════════════════════════
    PAGE TRANSITION SYSTEM

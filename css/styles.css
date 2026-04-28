@@ -769,3 +769,31 @@ a:focus-visible, button:focus-visible {
   h2 { font-size: 2rem !important; }
   h3 { font-size: 1.5rem !important; }
 }
+
+.faq-cat-icon, .faq-icon {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-faq-toggle] + .faq-cat-content,
+.faq-cat-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-faq-toggle] + .faq-cat-content.active,
+[data-faq-toggle].active + .faq-cat-content {
+  grid-template-rows: 1fr;
+}
+
+[data-faq-item-btn] + .faq-content,
+.faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-faq-item-btn] + .faq-content.active,
+[data-faq-item-btn]:focus + .faq-content,
+[data-faq-item-btn].active + .faq-content {
+  grid-template-rows: 1fr;
+}
