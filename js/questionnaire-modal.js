@@ -614,7 +614,7 @@
       payload['d' + (i + 1)] = d[i];
     }
 
-    var url = 'https://script.google.com/macros/s/AKfycbzHktTBGAwJa-2QrZwCdZuzkkEbndbQFw3vsI-dURviqO-cs4XhBEbPq84sUQ_EJwgN/exec';
+    var url = 'https://script.google.com/macros/s/AKfycbyvFEI6Z7VIjCIJpfs71eSoGzLrfk79Q6wz4RJFEitp9xIYM6M5e73Ntf-G8tfrYCQ/exec';
 
     fetch(url, {
       method: 'POST',
