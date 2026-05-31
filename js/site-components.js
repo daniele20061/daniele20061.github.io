@@ -24,9 +24,10 @@
       '      <div class="md:col-span-1">\n' +
       '        <h4 class="font-headline font-bold text-slate-900 mb-6">Pagine</h4>\n' +
       '        <ul class="space-y-4 font-inter text-sm text-slate-500">\n' +
-      '          <li><a class="hover:text-primary transition-colors" href="percorsi.html">Aree di Intervento</a></li>\n' +
-      '          <li><a class="hover:text-primary transition-colors" href="chi-sono.html">Chi Sono</a></li>\n' +
-      '          <li><a class="hover:text-primary transition-colors" href="contatti.html">Contatti</a></li>\n' +
+'          <li><a class="hover:text-primary transition-colors" href="percorsi.html">Aree di Intervento</a></li>\n' +
+'          <li><a class="hover:text-primary transition-colors" href="chi-sono.html">Chi Sono</a></li>\n' +
+'          <li><a class="hover:text-primary transition-colors" href="blog.html">Blog</a></li>\n' +
+'          <li><a class="hover:text-primary transition-colors" href="contatti.html">Contatti</a></li>\n' +
       '        </ul>\n' +
       '      </div>\n' +
       '      <div class="md:col-span-1">\n' +
@@ -40,14 +41,15 @@
       '      <div class="md:col-span-1">\n' +
       '        <h4 class="font-headline font-bold text-slate-900 mb-6">Newsletter</h4>\n' +
 '        <p class="text-xs text-slate-500 mb-4">Ricevi approfondimenti, strumenti e riflessioni sulla mente in azione: nello sport, nel lavoro, nella vita.</p>\n' +
-       '        <div class="space-y-3">\n' +
-       '          <input class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="latua@email.it" type="email"/>\n' +
-       '          <button class="w-full py-3 bg-slate-900 text-white rounded-xl font-headline font-bold text-sm hover:bg-slate-800 transition-all">Ricevi i prossimi contenuti</button>\n' +
-      '        </div>\n' +
+        '        <form id="newsletterForm" class="space-y-3">\n' +
+        '          <input id="newsletter-email" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="La tua email" type="email" required/>\n' +
+        '          <button class="w-full py-3 bg-slate-900 text-white rounded-xl font-headline font-bold text-sm hover:bg-slate-800 transition-all" type="submit">Ricevi i prossimi contenuti</button>\n' +
+        '          <span id="newsletter-msg" class="text-xs text-slate-500"></span>\n' +
+       '        </form>\n' +
       '      </div>\n' +
       '    </div>\n' +
       '    <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">\n' +
-      '      <p class="font-inter text-xs text-slate-500">© 2024 Ilaria Dammicco. Psicologa del Lavoro e dello Sport. P.IVA 1234567890</p>\n' +
+      '      <p class="font-inter text-xs text-slate-500">© 2026 Ilaria Dammicco. Psicologa del Lavoro e dello Sport. N.Albo: 9166</p>\n' +
       '    </div>\n' +
       '  </div>\n' +
       '</footer>';
@@ -57,5 +59,38 @@
   if (footerEl) {
     footerEl.insertAdjacentHTML('beforebegin', getFooter());
     footerEl.remove();
+  }
+
+  // Newsletter form submission to Google Sheets
+  var form = document.getElementById('newsletterForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('newsletter-email');
+      var msg = document.getElementById('newsletter-msg');
+      var btn = form.querySelector('button');
+      var url = 'https://script.google.com/macros/s/AKfycbww8-3T6mTjrwpcWHEfHVZ7vOu5sd8oFYJgtss9LozwVzNug4AWuZ2GS3ShChVFeQo/exec';
+
+      btn.disabled = true;
+      msg.textContent = 'Invio in corso...';
+
+      fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.value })
+      })
+      .then(function() {
+        msg.textContent = 'Grazie per esserti iscritto!';
+        email.value = '';
+      })
+      .catch(function(error) {
+        console.error('Errore:', error);
+        msg.textContent = 'Si è verificato un errore, riprova.';
+      })
+      .finally(function() {
+        btn.disabled = false;
+      });
+    });
   }
 })();

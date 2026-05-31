@@ -56,6 +56,163 @@
 </script>
 <link rel="stylesheet" href="css/styles.css"/>
 <link rel="stylesheet" href="css/hero.css"/>
+<style>
+  /* ═══ IMAGE HERO OVERRIDES ═══ */
+  .hero-title { color: #ffffff !important; }
+  .hero-title .purple-word { color: #c084fc !important; }
+  .hero-title .outline { -webkit-text-stroke: 1.5px rgba(255,255,255,0.35) !important; color: transparent !important; }
+  .hero-tagline-dot { background: #c084fc; }
+  .hero-tagline span { color: #c084fc !important; }
+  .typewriter-text { color: #ffffff !important; }
+  .typewriter-label { color: rgba(255,255,255,0.6) !important; }
+  .typewriter-cursor { background: #c084fc !important; }
+  .hero-copy p { color: rgba(255,255,255,0.8) !important; }
+  .hero-scroll-cta { color: rgba(255,255,255,0.7) !important; }
+  .scroll-line { background: linear-gradient(to bottom, #c084fc, transparent) !important; }
+  #hero-particle-canvas { opacity: 0.15; }
+  #bfly-canvas { opacity: 0.4; }
+
+  /* Navbar white on hero */
+  nav#site-nav a.nav-logo { color: #ffffff !important; }
+  nav#site-nav .nav-link { color: rgba(255,255,255,0.8) !important; }
+  nav#site-nav .nav-link:hover { color: #ffffff !important; }
+  nav#site-nav .nav-link.active { color: #ffffff !important; font-weight: 600 !important; }
+  nav#site-nav .nav-btn { background: rgba(255,255,255,0.15) !important; border: 1px solid rgba(255,255,255,0.3) !important; color: #ffffff !important; }
+  nav#site-nav .nav-btn svg circle { fill: #ffffff !important; }
+  nav#site-nav .nav-btn:hover { background: rgba(255,255,255,0.25) !important; }
+
+  /* ═══ HERO VISUAL — BLOB + IMAGE ═══ */
+  .hero-visual {
+    display: none !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .blob-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .blob-outline {
+    position: absolute;
+    bottom: 0;
+    width: 580px;
+    height: 720px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .blob-fill {
+    position: absolute;
+    bottom: 0;
+    width: 520px;
+    height: 660px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .blob-fill-body,
+  .blob-fill-before,
+  .blob-fill-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: 1px solid transparent;
+    will-change: border-radius, transform;
+  }
+
+  .blob-fill-body {
+    background: linear-gradient(135deg, #8d01c6 0%, #6b0196 40%, #4d0170 100%);
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    animation: blobMorph 8s linear infinite;
+    box-shadow: 0 0 80px rgba(141,1,198,0.3), inset 0 0 60px rgba(192,132,252,0.15);
+  }
+
+  .blob-fill-before {
+    background: linear-gradient(135deg, rgba(141,1,198,0.55) 0%, rgba(107,1,150,0.89) 100%);
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    animation: blobMorph 4s linear infinite;
+    opacity: 0.3;
+    box-shadow: 5px 5px 89px rgba(141,1,198,0.21);
+  }
+
+  .blob-fill-after {
+    background: linear-gradient(135deg, rgba(192,132,252,0.35) 0%, rgba(141,1,198,0.7) 100%);
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    animation: blobMorph 6s linear infinite;
+    animation-delay: 0.4s;
+    opacity: 0.6;
+  }
+
+  @keyframes blobMorph {
+    0%, 100% {
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+    }
+    25% {
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+      transform: translate3d(0, 8px, 0) rotateZ(0.01deg);
+    }
+    50% {
+      border-radius: 55% 45% 60% 40% / 50% 60% 40% 50%;
+      transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+    }
+    75% {
+      border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+      transform: translate3d(0, -5px, 0) rotateZ(0.01deg);
+    }
+  }
+
+  .hero-image-wrap {
+    position: relative;
+    z-index: 3;
+    width: 460px;
+    height: auto;
+    pointer-events: auto;
+    margin-bottom: -5px;
+  }
+  .hero-image-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+
+  }
+
+  /* Constrain hero text to left side */
+  #hero .hero-content {
+    max-width: 50% !important;
+    padding-left: 60px !important;
+    padding-right: 40px !important;
+    z-index: 4 !important;
+  }
+  #hero .hero-copy {
+    max-width: 50% !important;
+    padding-left: 60px !important;
+    padding-right: 40px !important;
+    z-index: 4 !important;
+  }
+
+  @media (max-width: 900px) {
+    .hero-visual { display: none; }
+    #hero .hero-content { max-width: 100% !important; padding-left: 20px !important; padding-right: 20px !important; }
+    #hero .hero-copy { max-width: 100% !important; padding-left: 20px !important; padding-right: 20px !important; }
+  }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,19 +220,6 @@
   "name": "Ilaria Dammicco",
   "url": "https://ilariadammicco.it",
   "description": "Psicologa del Lavoro e dello Sport � Mental Training & Performance"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Ilaria Dammicco � Psicologa del Lavoro e dello Sport",
-  "url": "https://ilariadammicco.it",
-  "email": "ilaria.dammicco@gmail.com",
-  "telephone": "+393803786258",
-  "description": "Psicologa specializzata in psicologia del lavoro e dello sport. Consulenza psicologica e mental training per atleti, professionisti e aziende.",
-  "areaServed": "Italy",
-  "hasCredential": { "@type": "EducationalOccupationalCredential", "name": "N.Albo: 9166" }
 }
 </script>
 </head>
@@ -105,18 +249,36 @@
     <div class="absolute inset-0 bg-primary/40 backdrop-brightness-[0.65] z-0"></div>
     <canvas id="hero-particle-canvas"></canvas>
     <canvas id="bfly-canvas"></canvas>
+
+    <!-- Hero visual: blob + image (right side) -->
+    <div class="hero-visual" id="hero-visual">
+      <div class="blob-wrapper" id="blob-wrapper">
+        <svg class="blob-outline" viewBox="0 0 580 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M290,45 C400,35 520,160 530,330 C540,500 470,640 360,670 C250,700 130,640 80,490 C30,340 50,190 140,100 C200,40 240,50 290,45Z" stroke="#444749" stroke-width="1" stroke-dasharray="5 8" opacity="0.3"/>
+        </svg>
+        <div class="blob-fill">
+          <div class="blob-fill-body"></div>
+          <div class="blob-fill-before"></div>
+          <div class="blob-fill-after"></div>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <img src="img/18.png" alt="Ilaria Dammicco" loading="lazy"/>
+      </div>
+    </div>
+
     <div class="hero-content">
       <div class="hero-tagline">
         <div class="hero-tagline-dot"></div>
         <div class="typewriter-text" id="typewriter"><span class="typewriter-cursor"></span></div>
       </div>
-      <h1 class="hero-title" style="color:#ffffff !important;">
+      <h1 class="hero-title">
         ILARIA<br>
-        <span class="purple-word" style="color:#a855f7 !important;">DAMMICCO</span>
+        <span class="purple-word">DAMMICCO</span>
       </h1>
     </div>
     <div class="hero-copy">
-      <p>Aiuto atleti, team aziendali e società sportive a raggiungere il loro massimo potenziale: Sviluppando competenze e benessere con strumenti dello sport d’Elite</p>
+      <p>Aiuto atleti, team aziendali e società sportive a raggiungere il loro massimo potenziale: Sviluppando competenze e benessere con strumenti dello sport d'Elite</p>
     </div>
     <div class="hero-bottom" style="justify-content:flex-end;">
       <div class="hero-scroll-cta">
@@ -455,6 +617,40 @@
 <div id="site-footer" data-active="index"></div>
 
 <script src="js/navbar.js"></script>
+<style id="nav-white-overrides">
+  nav#site-nav { background: transparent !important; backdrop-filter: none !important; }
+  nav#site-nav a.nav-logo { color: #ffffff !important; }
+  nav#site-nav .nav-link { color: rgba(255,255,255,0.8) !important; }
+  nav#site-nav .nav-link:hover { color: #ffffff !important; background: rgba(255,255,255,0.1) !important; }
+  nav#site-nav .nav-link.active { color: #ffffff !important; font-weight: 600 !important; }
+  nav#site-nav .nav-btn { background: rgba(255,255,255,0.15) !important; border: 1px solid rgba(255,255,255,0.3) !important; color: #fff !important; }
+  nav#site-nav .nav-btn:hover { background: rgba(255,255,255,0.25) !important; }
+  nav#site-nav.scrolled { background: rgba(15,23,42,0.92) !important; backdrop-filter: blur(20px) !important; border-bottom: 1px solid rgba(141,1,198,0.2) !important; }
+  nav#site-nav.scrolled a.nav-logo { color: #ffffff !important; }
+  nav#site-nav.scrolled .nav-link { color: rgba(255,255,255,0.7) !important; }
+  nav#site-nav.scrolled .nav-link:hover { color: #fff !important; background: rgba(255,255,255,0.08) !important; }
+  nav#site-nav.scrolled .nav-link.active { color: #fff !important; }
+  nav#site-nav.scrolled .nav-btn { background: #8d01c6 !important; border-color: transparent !important; color: #fff !important; }
+</style>
+<script>
+  // Fix navbar logo inline color (overrides navbar.js inline #fff)
+  (function(){
+    function fixNavColors(){
+      var logo = document.querySelector('nav#site-nav a.nav-logo');
+      if(!logo) return;
+      logo.style.setProperty('color','#ffffff','important');
+      var nav = document.getElementById('site-nav');
+      if(!nav) return;
+      var observer = new MutationObserver(function(){
+        var scrolled = nav.classList.contains('scrolled');
+        logo.style.setProperty('color', '#ffffff', 'important');
+      });
+      observer.observe(nav, { attributes: true, attributeFilter: ['class'] });
+    }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fixNavColors);
+    else setTimeout(fixNavColors, 50);
+  })();
+</script>
 <script src="js/site-components.js"></script>
 <script src="js/calendar.js"></script>
 <script>
@@ -1033,6 +1229,29 @@ document.addEventListener('DOMContentLoaded', () => {
 type();
   })();
 });
+
+// ═══ BLOB MOUSE TRACKING ═══
+(function blobMouse() {
+  var wrapper = document.getElementById('blob-wrapper');
+  if (!wrapper) return;
+
+  var tx = 0, ty = 0, cx = 0, cy = 0;
+  var visual = document.getElementById('hero-visual');
+
+  document.addEventListener('mousemove', function(e) {
+    if (!visual) return;
+    var r = visual.getBoundingClientRect();
+    tx = ((e.clientX - (r.left + r.width / 2)) / (r.width / 2)) * 20;
+    ty = ((e.clientY - (r.top + r.height / 2)) / (r.height / 2)) * 15;
+  });
+
+  (function loop() {
+    cx += (tx - cx) * 0.03;
+    cy += (ty - cy) * 0.03;
+    wrapper.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+    requestAnimationFrame(loop);
+  })();
+})();
 </script>
 </body>
 </html>

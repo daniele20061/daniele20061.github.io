@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════
-    MONTHLY CALENDAR WIDGET
-    Full month view, navigable, today highlighted
+    MONTHLY CALENDAR WIDGET + TIME SLOTS
+    Full month view, navigable, 20-min time blocks
     ═══════════════════════════════════════════ */
 (function monthlyCalendarWidget() {
   var MESES = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
@@ -12,19 +12,111 @@
     var prevBtn = document.getElementById('cal-prev');
     var nextBtn = document.getElementById('cal-next');
     var selectionInfoEl = document.getElementById('calendar-selection-info');
+    var slotsContainer = document.getElementById('time-slots-container');
+    var slotsGrid = document.getElementById('time-slots-grid');
     if (!labelEl || !daysEl || !prevBtn || !nextBtn) return;
 
     var today = new Date();
     today.setHours(0, 0, 0, 0);
     var displayedMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-    var selectedDate = new Date(today); // Pre-select today by default
+    var selectedDate = null;
+    var selectedTime = null;
+    var occupiedSlots = null;
 
     function getDaysInMonth(year, month) {
       return new Date(year, month + 1, 0).getDate();
     }
 
     function getFirstDayOfMonth(year, month) {
-      return new Date(year, month, 1).getDay(); // 0 = Domenica, 1 = Lunedì, etc.
+      return new Date(year, month, 1).getDay();
+    }
+
+    function formatTime(h, m) {
+      return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+    }
+
+    function dateStr(d) {
+      if (!d) return '';
+      var y = d.getFullYear();
+      var m = (d.getMonth() + 1 < 10 ? '0' : '') + (d.getMonth() + 1);
+      var day = (d.getDate() < 10 ? '0' : '') + d.getDate();
+      return day + '/' + m + '/' + y;
+    }
+
+    function fetchOccupiedSlots() {
+      var url = 'https://script.google.com/macros/s/AKfycbzHktTBGAwJa-2QrZwCdZuzkkEbndbQFw3vsI-dURviqO-cs4XhBEbPq84sUQ_EJwgN/exec';
+      return fetch(url)
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          occupiedSlots = {};
+          data.forEach(function(slot) {
+            occupiedSlots[slot.data + '|' + slot.orario] = true;
+          });
+        })
+        .catch(function(err) {
+          console.warn('Impossibile recuperare gli slot occupati:', err);
+        });
+    }
+
+    function generateTimeSlots() {
+      var slots = [];
+      // 9:00 - 11:00 (20 min intervals)
+      for (var h = 9; h < 11; h++) {
+        for (var m = 0; m < 60; m += 20) {
+          slots.push({ h: h, m: m });
+        }
+      }
+      // 17:00 - 19:00 (20 min intervals)
+      for (var h = 17; h < 19; h++) {
+        for (var m = 0; m < 60; m += 20) {
+          slots.push({ h: h, m: m });
+        }
+      }
+      return slots;
+    }
+
+    function renderTimeSlots() {
+      if (!slotsContainer || !slotsGrid || !selectedDate) return;
+
+      var now = new Date();
+      slotsGrid.innerHTML = '';
+      var slots = generateTimeSlots();
+
+      slots.forEach(function(slot) {
+        var btn = document.createElement('button');
+        var label = formatTime(slot.h, slot.m);
+        btn.textContent = label;
+        btn.className = 'py-2 px-3 text-xs font-semibold rounded-lg border border-surface-variant/30 bg-white text-on-surface transition-all hover:border-primary hover:bg-surface-container';
+
+        var isPast = false;
+        if (selectedDate.getTime() === today.getTime()) {
+          var slotDate = new Date();
+          slotDate.setHours(slot.h, slot.m, 0, 0);
+          if (slotDate <= now) isPast = true;
+        }
+
+        var isOccupied = occupiedSlots && occupiedSlots[dateStr(selectedDate) + '|' + label] === true;
+
+        if (isPast || isOccupied) {
+          btn.className += ' opacity-25 cursor-not-allowed';
+          if (isOccupied) btn.title = 'Già prenotato';
+        } else {
+          if (selectedTime && selectedTime.h === slot.h && selectedTime.m === slot.m) {
+            btn.className += ' border-primary bg-surface-container';
+          }
+          (function(s) {
+            btn.addEventListener('click', function() {
+              selectedTime = s;
+              renderTimeSlots();
+              updateSelectionInfo();
+            });
+          })(slot);
+        }
+
+        slotsGrid.appendChild(btn);
+      });
+
+      slotsContainer.classList.remove('hidden');
     }
 
     function updateButtons() {
@@ -40,26 +132,46 @@
           var day = selectedDate.getDate();
           var month = selectedDate.getMonth();
           var year = selectedDate.getFullYear();
-          selectionInfoEl.innerHTML = '<span class="font-semibold text-primary">' + day + ' ' + MESES[month] + ' ' + year + '</span> selezionato';
+          var html = '<span class="font-semibold text-primary">' + day + ' ' + MESES[month] + ' ' + year + '</span>';
+          if (selectedTime) {
+            html += ' alle <span class="font-semibold text-primary">' + formatTime(selectedTime.h, selectedTime.m) + '</span>';
+          }
+          selectionInfoEl.innerHTML = html + ' selezionato';
         } else {
           selectionInfoEl.innerHTML = 'Nessuna data selezionata';
         }
       }
     }
 
-    function renderDays(year, month) {
+    function renderWeekdayHeaders() {
       var weekdayHeaderEl = document.getElementById('calendar-weekdays');
-      if (weekdayHeaderEl) {
-        weekdayHeaderEl.innerHTML = '';
-        GIORNI_SETTIMANA.forEach(function(giorno) {
-          var div = document.createElement('div');
-          div.className = 'text-center py-2 text-xs font-bold text-outline';
-          div.textContent = giorno;
-          weekdayHeaderEl.appendChild(div);
-        });
-      }
+      if (!weekdayHeaderEl) return;
+      weekdayHeaderEl.innerHTML = '';
+      GIORNI_SETTIMANA.forEach(function(giorno) {
+        var div = document.createElement('div');
+        div.className = 'text-center py-2 text-xs font-bold text-outline';
+        div.textContent = giorno;
+        weekdayHeaderEl.appendChild(div);
+      });
+    }
+
+    function showLoading() {
+      daysEl.innerHTML = '';
+      var loadingDiv = document.createElement('div');
+      loadingDiv.className = 'col-span-7 text-center py-8 text-sm text-primary/60';
+      loadingDiv.textContent = 'Caricando disponibilità…';
+      daysEl.appendChild(loadingDiv);
+      if (slotsContainer) slotsContainer.classList.add('hidden');
+      selectedTime = null;
+      updateSelectionInfo();
+    }
+
+    function renderDays(year, month) {
+      renderWeekdayHeaders();
       
       daysEl.innerHTML = '';
+      if (slotsContainer) slotsContainer.classList.add('hidden');
+      selectedTime = null;
 
       var daysInMonth = getDaysInMonth(year, month);
       var firstDayIndex = getFirstDayOfMonth(year, month);
@@ -92,8 +204,10 @@
           (function(date) {
             div.addEventListener('click', function() {
               selectedDate = new Date(date);
+              selectedTime = null;
               renderDays(year, month);
               updateSelectionInfo();
+              renderTimeSlots();
             });
           })(currentDate);
         }
@@ -155,15 +269,32 @@
       var year = displayedMonth.getFullYear();
       var month = displayedMonth.getMonth();
       updateLabel(year, month);
-      renderDays(year, month);
+      renderWeekdayHeaders();
+      showLoading();
       updateSelectionInfo();
       updateButtons();
     }
 
-    prevBtn.addEventListener('click', function() { navigate(-1); });
-    nextBtn.addEventListener('click', function() { navigate(1); });
+    window.__prenotazioneData = {
+      get date() { return selectedDate; },
+      get time() { return selectedTime; },
+      get dateStr() { return dateStr(selectedDate); },
+      get timeStr() {
+        if (!selectedTime) return '';
+        return formatTime(selectedTime.h, selectedTime.m);
+      }
+    };
 
     initialRender();
+
+    fetchOccupiedSlots().then(function() {
+      var year = displayedMonth.getFullYear();
+      var month = displayedMonth.getMonth();
+      renderDays(year, month);
+    });
+
+    prevBtn.addEventListener('click', function() { navigate(-1); });
+    nextBtn.addEventListener('click', function() { navigate(1); });
   }
 
   if (document.readyState === 'loading') {

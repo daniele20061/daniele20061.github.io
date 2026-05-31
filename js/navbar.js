@@ -9,6 +9,7 @@
       '<div class="nav-right">' +
         '<a class="nav-link" href="chi-sono.html">Chi Sono</a>' +
         '<a class="nav-link" href="percorsi.html">Percorsi</a>' +
+        '<a class="nav-link" href="blog.html">Blog</a>' +
         '<a class="nav-link" href="contatti.html">Contatti</a>' +
         '<button class="nav-btn" onclick="window.location.href=\'prenotazione.html\'">' +
           '<svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="white"/></svg>' +
@@ -76,10 +77,19 @@
     placeholder.remove();
 
     // Mark active link
-    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    var currentPath = window.location.pathname;
+    var currentPage = currentPath.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-link').forEach(function(link) {
-      if (link.getAttribute('href') === currentPage) {
+      var href = link.getAttribute('href');
+      if (href === currentPage) {
         link.classList.add('active');
+      } else if (href.indexOf('/') !== -1 && currentPath.indexOf(href) !== -1) {
+        link.classList.add('active');
+      } else {
+        var base = href.replace('.html', '');
+        if (currentPath.indexOf('/' + base + '/') !== -1) {
+          link.classList.add('active');
+        }
       }
     });
   }
