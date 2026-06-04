@@ -44,7 +44,7 @@
     }
 
     function fetchOccupiedSlots() {
-      var url = 'https://script.google.com/macros/s/AKfycbyvFEI6Z7VIjCIJpfs71eSoGzLrfk79Q6wz4RJFEitp9xIYM6M5e73Ntf-G8tfrYCQ/exec';
+      var url = 'https://script.google.com/macros/s/AKfycbz0voCd4C_Jw6xoawiOL_duLo8eWrxvV_w2S3xlGTBZ3Txiln0ftNPzIOkXq1siJi7q/exec';
       return fetch(url)
         .then(function(res) { return res.json(); })
         .then(function(data) {

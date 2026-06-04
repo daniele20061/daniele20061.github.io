@@ -214,6 +214,11 @@
         }
       ]
     },
+    contact: {
+      id: 'contact',
+      type: 'contact',
+      question: 'Lascia i tuoi recapiti per essere ricontattato'
+    },
     final: {
       id: 'final-note',
       type: 'text',
@@ -320,11 +325,11 @@
   }
 
   function buildSteps() {
-    return [QUESTIONS.category];
+    return [QUESTIONS.category, QUESTIONS.contact];
   }
 
   function reconstructSteps(category) {
-    state.steps = [QUESTIONS.category];
+    state.steps = [QUESTIONS.category, QUESTIONS.contact];
     if (category) {
       state.steps = state.steps.concat(QUESTIONS.categories[category]);
     }
@@ -373,6 +378,8 @@
     // Label
     if (state.currentStep === 0) {
       stepDiv.innerHTML += '<div class="questionnaire-step-label">Categoria</div>';
+    } else if (step.id === 'contact') {
+      stepDiv.innerHTML += '<div class="questionnaire-step-label">Contatti</div>';
     } else if (state.currentStep === total - 1) {
       stepDiv.innerHTML += '<div class="questionnaire-step-label">Ultimo passo</div>';
     } else {
@@ -383,7 +390,47 @@
     stepDiv.innerHTML += '<div class="questionnaire-question">' + step.question + '</div>';
 
     // Input
-    if (step.type === 'choice') {
+    if (step.type === 'contact') {
+      var fields = [
+        { id: 'contact-nome', label: 'Nome e Cognome', type: 'text', placeholder: 'Mario Rossi' },
+        { id: 'contact-email', label: 'Email', type: 'email', placeholder: 'mario@email.com' },
+        { id: 'contact-telefono', label: 'Telefono', type: 'tel', placeholder: '+39 320 123 4567' }
+      ];
+
+      var contactWrap = document.createElement('div');
+      contactWrap.style.display = 'flex';
+      contactWrap.style.flexDirection = 'column';
+      contactWrap.style.gap = '16px';
+
+      fields.forEach(function(f) {
+        var fieldDiv = document.createElement('div');
+
+        var labelEl = document.createElement('label');
+        labelEl.style.display = 'block';
+        labelEl.style.fontSize = '14px';
+        labelEl.style.fontWeight = '600';
+        labelEl.style.marginBottom = '4px';
+        labelEl.textContent = f.label;
+        fieldDiv.appendChild(labelEl);
+
+        var input = document.createElement('input');
+        input.type = f.type;
+        input.className = 'questionnaire-input';
+        input.placeholder = f.placeholder;
+        input.value = state.answers[f.id] || '';
+
+        input.addEventListener('input', function() {
+          state.answers[f.id] = this.value;
+          updateNextButton();
+        });
+
+        fieldDiv.appendChild(input);
+        contactWrap.appendChild(fieldDiv);
+      });
+
+      stepDiv.appendChild(contactWrap);
+
+    } else if (step.type === 'choice') {
       var optionsWrap = document.createElement('div');
       optionsWrap.className = 'questionnaire-options';
 
@@ -494,6 +541,12 @@
       answered = state.answers[step.id] && state.answers[step.id].trim().length > 0;
     }
 
+    if (step.type === 'contact') {
+      answered = state.answers['contact-nome'] && state.answers['contact-nome'].trim().length > 0 &&
+                 state.answers['contact-email'] && state.answers['contact-email'].trim().length > 0 &&
+                 state.answers['contact-telefono'] && state.answers['contact-telefono'].trim().length > 0;
+    }
+
     var isLast = state.currentStep === state.steps.length - 1;
 
     if (isLast) {
@@ -530,6 +583,11 @@
     if (step.type === 'text') {
       answered = state.answers[step.id] && state.answers[step.id].trim().length > 0;
     }
+    if (step.type === 'contact') {
+      answered = state.answers['contact-nome'] && state.answers['contact-nome'].trim().length > 0 &&
+                 state.answers['contact-email'] && state.answers['contact-email'].trim().length > 0 &&
+                 state.answers['contact-telefono'] && state.answers['contact-telefono'].trim().length > 0;
+    }
 
     if (!answered) {
       showError('Per favore, rispondi prima di proseguire.');
@@ -562,6 +620,11 @@
 
   function confirmBooking() {
     var allAnswered = state.steps.every(function(step) {
+      if (step.type === 'contact') {
+        return state.answers['contact-nome'] && state.answers['contact-nome'].trim().length > 0 &&
+               state.answers['contact-email'] && state.answers['contact-email'].trim().length > 0 &&
+               state.answers['contact-telefono'] && state.answers['contact-telefono'].trim().length > 0;
+      }
       var val = state.answers[step.id];
       return val && (step.type !== 'text' || val.trim().length > 0);
     });
@@ -590,9 +653,18 @@
 
     var d = ['', '', '', '', '', '', '', ''];
     var steps = state.steps;
+    var di = 0;
 
-    for (var i = 0; i < 8 && i < steps.length; i++) {
-      var step = steps[i];
+    for (var si = 0; si < steps.length && di < 8; si++) {
+      var step = steps[si];
+
+      if (step.type === 'contact') {
+        d[di++] = 'Nome e Cognome? ' + (state.answers['contact-nome'] || '');
+        if (di < 8) d[di++] = 'Email? ' + (state.answers['contact-email'] || '');
+        if (di < 8) d[di++] = 'Telefono? ' + (state.answers['contact-telefono'] || '');
+        continue;
+      }
+
       var raw = state.answers[step.id];
       if (!raw) continue;
 
@@ -606,7 +678,7 @@
         }
       }
 
-      d[i] = step.question + (step.question.slice(-1) === '?' ? ' ' : '? ') + label;
+      d[di++] = step.question + (step.question.slice(-1) === '?' ? ' ' : '? ') + label;
     }
 
     var payload = { data: data, orario: orario };
@@ -614,7 +686,11 @@
       payload['d' + (i + 1)] = d[i];
     }
 
-    var url = 'https://script.google.com/macros/s/AKfycbyvFEI6Z7VIjCIJpfs71eSoGzLrfk79Q6wz4RJFEitp9xIYM6M5e73Ntf-G8tfrYCQ/exec';
+    payload['nome'] = state.answers['contact-nome'] || '';
+    payload['email'] = state.answers['contact-email'] || '';
+    payload['telefono'] = state.answers['contact-telefono'] || '';
+
+    var url = 'https://script.google.com/macros/s/AKfycbz0voCd4C_Jw6xoawiOL_duLo8eWrxvV_w2S3xlGTBZ3Txiln0ftNPzIOkXq1siJi7q/exec';
 
     fetch(url, {
       method: 'POST',
