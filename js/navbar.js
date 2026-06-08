@@ -3,15 +3,20 @@
    Dark, transparent→dark on scroll, scroll-aware
    ══════════════════════════════════════════ */
 (function Navbar() {
+  var path = window.location.pathname;
+  var dir = path.substring(0, path.lastIndexOf('/'));
+  var lastSegment = dir.substring(dir.lastIndexOf('/') + 1);
+  var prefix = (lastSegment === 'blog') ? '../' : '';
+
   var NAV_HTML =
     '<nav id="site-nav">' +
-      '<a href="index.html" class="nav-logo" style="all:unset;display:inline-flex;align-items:center;font-family:Manrope,sans-serif !important;font-weight:800 !important;font-size:15px !important;letter-spacing:0.12em !important;color:#fff !important;text-transform:uppercase !important;cursor:none !important;">Ilaria Dammicco</a>' +
+      '<a href="' + prefix + 'index.html" class="nav-logo" style="all:unset;display:inline-flex;align-items:center;font-family:Manrope,sans-serif !important;font-weight:800 !important;font-size:15px !important;letter-spacing:0.12em !important;color:#fff !important;text-transform:uppercase !important;cursor:none !important;">Ilaria Dammicco</a>' +
       '<div class="nav-right">' +
-        '<a class="nav-link" href="chi-sono.html">Chi Sono</a>' +
-        '<a class="nav-link" href="percorsi.html">Percorsi</a>' +
-        '<a class="nav-link" href="blog.html">Blog</a>' +
-        '<a class="nav-link" href="contatti.html">Contatti</a>' +
-        '<button class="nav-btn" onclick="window.location.href=\'prenotazione.html\'">' +
+        '<a class="nav-link" href="' + prefix + 'chi-sono.html">Chi Sono</a>' +
+        '<a class="nav-link" href="' + prefix + 'percorsi.html">Percorsi</a>' +
+        '<a class="nav-link" href="' + prefix + 'blog.html">Blog</a>' +
+        '<a class="nav-link" href="' + prefix + 'contatti.html">Contatti</a>' +
+        '<button class="nav-btn" onclick="window.location.href=\'' + prefix + 'prenotazione.html\'">' +
           '<svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="white"/></svg>' +
           'Prenota' +
         '</button>' +

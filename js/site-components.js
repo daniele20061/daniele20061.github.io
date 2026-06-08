@@ -5,6 +5,11 @@
    ══════════════════════════════════════════ */
 
 (function SiteComponents() {
+  var path = window.location.pathname;
+  var dir = path.substring(0, path.lastIndexOf('/'));
+  var lastSegment = dir.substring(dir.lastIndexOf('/') + 1);
+  var prefix = (lastSegment === 'blog') ? '../' : '';
+
   function getFooter() {
     return '<footer class="bg-slate-50 border-t border-slate-200">\n' +
       '  <div class="max-w-7xl mx-auto px-8 py-20">\n' +
@@ -24,18 +29,18 @@
       '      <div class="md:col-span-1">\n' +
       '        <h4 class="font-headline font-bold text-slate-900 mb-6">Pagine</h4>\n' +
       '        <ul class="space-y-4 font-inter text-sm text-slate-500">\n' +
-'          <li><a class="hover:text-primary transition-colors" href="percorsi.html">Aree di Intervento</a></li>\n' +
-'          <li><a class="hover:text-primary transition-colors" href="chi-sono.html">Chi Sono</a></li>\n' +
-'          <li><a class="hover:text-primary transition-colors" href="blog.html">Blog</a></li>\n' +
-'          <li><a class="hover:text-primary transition-colors" href="contatti.html">Contatti</a></li>\n' +
+'          <li><a class="hover:text-primary transition-colors" href="' + prefix + 'percorsi.html">Aree di Intervento</a></li>\n' +
+'          <li><a class="hover:text-primary transition-colors" href="' + prefix + 'chi-sono.html">Chi Sono</a></li>\n' +
+'          <li><a class="hover:text-primary transition-colors" href="' + prefix + 'blog.html">Blog</a></li>\n' +
+'          <li><a class="hover:text-primary transition-colors" href="' + prefix + 'contatti.html">Contatti</a></li>\n' +
       '        </ul>\n' +
       '      </div>\n' +
       '      <div class="md:col-span-1">\n' +
       '        <h4 class="font-headline font-bold text-slate-900 mb-6">Legale</h4>\n' +
       '        <ul class="space-y-4 font-inter text-sm text-slate-500">\n' +
-      '          <li><a class="hover:text-primary transition-colors" href="privacy-policy.html">Privacy Policy</a></li>\n' +
-      '          <li><a class="hover:text-primary transition-colors" href="cookie-policy.html">Cookie Policy</a></li>\n' +
-      '          <li><a class="hover:text-primary transition-colors" href="termini-e-condizioni.html">Termini e Condizioni</a></li>\n' +
+      '          <li><a class="hover:text-primary transition-colors" href="' + prefix + 'privacy-policy.html">Privacy Policy</a></li>\n' +
+      '          <li><a class="hover:text-primary transition-colors" href="' + prefix + 'cookie-policy.html">Cookie Policy</a></li>\n' +
+      '          <li><a class="hover:text-primary transition-colors" href="' + prefix + 'termini-e-condizioni.html">Termini e Condizioni</a></li>\n' +
       '        </ul>\n' +
       '      </div>\n' +
       '      <div class="md:col-span-1">\n' +
