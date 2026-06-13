@@ -196,6 +196,10 @@ button:active, .button:active { transform: scale(0.97); }
 
 .accordion-item:hover, .accordion-item.active { flex: 4; }
 
+@media (max-width: 767px) {
+  .accordion-item:hover, .accordion-item.active { flex: 6; }
+}
+
 /* ══════════════════════════════════════════
    HERO OVERLAY
    ══════════════════════════════════════════ */
