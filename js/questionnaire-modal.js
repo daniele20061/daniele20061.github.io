@@ -651,17 +651,16 @@
       confirmBtn.textContent = 'Invio in corso…';
     }
 
-    var d = ['', '', '', '', '', '', '', ''];
+    var answers = [];
     var steps = state.steps;
-    var di = 0;
 
-    for (var si = 0; si < steps.length && di < 8; si++) {
+    for (var si = 0; si < steps.length; si++) {
       var step = steps[si];
 
       if (step.type === 'contact') {
-        d[di++] = 'Nome e Cognome? ' + (state.answers['contact-nome'] || '');
-        if (di < 8) d[di++] = 'Email? ' + (state.answers['contact-email'] || '');
-        if (di < 8) d[di++] = 'Telefono? ' + (state.answers['contact-telefono'] || '');
+        answers.push('Nome e Cognome: ' + (state.answers['contact-nome'] || ''));
+        answers.push('Email: ' + (state.answers['contact-email'] || ''));
+        answers.push('Telefono: ' + (state.answers['contact-telefono'] || ''));
         continue;
       }
 
@@ -678,30 +677,82 @@
         }
       }
 
-      d[di++] = step.question + (step.question.slice(-1) === '?' ? ' ' : '? ') + label;
+      answers.push(step.question + (step.question.slice(-1) === '?' ? ' ' : ': ') + label);
     }
 
-    var payload = { data: data, orario: orario };
-    for (var i = 0; i < 8; i++) {
-      payload['d' + (i + 1)] = d[i];
+    var payload = {
+      access_key: '9a627b9c-39f5-42d4-939a-1687f86139e9',
+      subject: 'Nuova prenotazione dal sito - ' + (CATEGORIES[state.answers.category] || 'Categoria non specificata'),
+      name: state.answers['contact-nome'] || '',
+      email: state.answers['contact-email'] || '',
+      telefono: state.answers['contact-telefono'] || '',
+      data: data,
+      orario: orario,
+      categoria: CATEGORIES[state.answers.category] || state.answers.category || '',
+      dettagli_prenotazione: answers.join('\n')
+    };
+
+    // Mantiene il formato atteso dal Google Apps Script che aggiorna gli slot occupati.
+    var legacyAnswers = ['', '', '', '', '', '', '', ''];
+    var legacyIndex = 0;
+    for (var li = 0; li < steps.length && legacyIndex < legacyAnswers.length; li++) {
+      var legacyStep = steps[li];
+      if (legacyStep.type === 'contact') {
+        legacyAnswers[legacyIndex++] = 'Nome e Cognome? ' + (state.answers['contact-nome'] || '');
+        if (legacyIndex < legacyAnswers.length) legacyAnswers[legacyIndex++] = 'Email? ' + (state.answers['contact-email'] || '');
+        if (legacyIndex < legacyAnswers.length) legacyAnswers[legacyIndex++] = 'Telefono? ' + (state.answers['contact-telefono'] || '');
+        continue;
+      }
+
+      var legacyValue = state.answers[legacyStep.id];
+      if (!legacyValue) continue;
+      var legacyLabel = legacyValue;
+      if (legacyStep.options) {
+        for (var lj = 0; lj < legacyStep.options.length; lj++) {
+          if (legacyStep.options[lj].value === legacyValue) {
+            legacyLabel = legacyStep.options[lj].label;
+            break;
+          }
+        }
+      }
+      legacyAnswers[legacyIndex++] = legacyStep.question + (legacyStep.question.slice(-1) === '?' ? ' ' : '? ') + legacyLabel;
     }
 
-    payload['nome'] = state.answers['contact-nome'] || '';
-    payload['email'] = state.answers['contact-email'] || '';
-    payload['telefono'] = state.answers['contact-telefono'] || '';
+    var sheetsPayload = { data: data, orario: orario };
+    for (var di = 0; di < legacyAnswers.length; di++) sheetsPayload['d' + (di + 1)] = legacyAnswers[di];
+    sheetsPayload.nome = state.answers['contact-nome'] || '';
+    sheetsPayload.email = state.answers['contact-email'] || '';
+    sheetsPayload.telefono = state.answers['contact-telefono'] || '';
 
-    var url = 'https://script.google.com/macros/s/AKfycbz0voCd4C_Jw6xoawiOL_duLo8eWrxvV_w2S3xlGTBZ3Txiln0ftNPzIOkXq1siJi7q/exec';
-
-    fetch(url, {
+    var sheetsRequest = fetch('https://script.google.com/macros/s/AKfycbz0voCd4C_Jw6xoawiOL_duLo8eWrxvV_w2S3xlGTBZ3Txiln0ftNPzIOkXq1siJi7q/exec', {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: JSON.stringify(sheetsPayload)
+    });
+
+    var web3formsRequest = fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(payload)
-    }).then(function() {
+    }).then(function(response) {
+      return response.json().then(function(result) {
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Il servizio non ha accettato la prenotazione.');
+        }
+        return result;
+      });
+    });
+
+    Promise.all([sheetsRequest, web3formsRequest]).then(function() {
       showConfirmationView();
     }).catch(function(error) {
       console.error('Errore invio prenotazione:', error);
-      showConfirmationView();
+      showError('Non è stato possibile inviare la prenotazione. Controlla la connessione e riprova.');
+      if (confirmBtn) {
+        confirmBtn.disabled = false;
+        confirmBtn.textContent = 'Conferma Prenotazione';
+      }
     });
   }
 
